@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// UpdateI is the input for updating event descriptions.
+// UpdateI is the input for updating descriptions.
 //
 //	{
 //	    "object": [
@@ -297,7 +297,7 @@ func (x *UpdateI_Object_Update) GetVal() string {
 	return ""
 }
 
-// UpdateO is the output for updating event descriptions.
+// UpdateO is the output for updating descriptions.
 //
 //	{
 //	    "object": [

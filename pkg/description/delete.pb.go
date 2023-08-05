@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// DeleteI is the input for deleting event descriptions.
+// DeleteI is the input for deleting descriptions.
 //
 //	{
 //	    "object": [
@@ -265,7 +265,7 @@ func (*DeleteI_Object_Public) Descriptor() ([]byte, []int) {
 	return file_pbf_description_delete_proto_rawDescGZIP(), []int{4}
 }
 
-// DeleteO is the output for deleting event descriptions.
+// DeleteO is the output for deleting descriptions.
 //
 //	{
 //	    "object": [
