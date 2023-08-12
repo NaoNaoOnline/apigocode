@@ -254,7 +254,8 @@ type SearchI_Object_Intern struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// kind is the label type for which events are being searched.
+	// kind is the label type for which events are being searched, e.g. host for
+	// host labels and cate for category labels.
 	Kind string `protobuf:"bytes,100,opt,name=kind,proto3" json:"kind,omitempty"`
 }
 
