@@ -353,8 +353,12 @@ func (*SearchI_Object_Public) Descriptor() ([]byte, []int) {
 //	            },
 //	            "public": {
 //	                "evnt": "778237",
-//	                "text": "In this Hackathon we build awesome stuff!",
-//	                "vote": "7"
+//	                "rtng": {
+//	                    "98972893": {
+//	                        "amnt": 7
+//	                    }
+//	                },
+//	                "text": "In this Hackathon we build awesome stuff!"
 //	            }
 //	        },
 //	        ...
@@ -581,11 +585,11 @@ type SearchO_Object_Public struct {
 
 	// evnt is the event ID this description is mapped to.
 	Evnt string `protobuf:"bytes,100,opt,name=evnt,proto3" json:"evnt,omitempty"`
+	// rntg is the map of aggregated quality measurement for this description
+	// based on user reactions where the map key is the rating ID.
+	Rtng map[string]*SearchO_Object_Public_Rtng `protobuf:"bytes,200,rep,name=rtng,proto3" json:"rtng,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// text is the description explaining what this event is about.
-	Text string `protobuf:"bytes,200,opt,name=text,proto3" json:"text,omitempty"`
-	// vote is the aggregated quality measurement for this description based on
-	// user likes and dislikes.
-	Vote string `protobuf:"bytes,300,opt,name=vote,proto3" json:"vote,omitempty"`
+	Text string `protobuf:"bytes,300,opt,name=text,proto3" json:"text,omitempty"`
 }
 
 func (x *SearchO_Object_Public) Reset() {
@@ -627,6 +631,13 @@ func (x *SearchO_Object_Public) GetEvnt() string {
 	return ""
 }
 
+func (x *SearchO_Object_Public) GetRtng() map[string]*SearchO_Object_Public_Rtng {
+	if x != nil {
+		return x.Rtng
+	}
+	return nil
+}
+
 func (x *SearchO_Object_Public) GetText() string {
 	if x != nil {
 		return x.Text
@@ -634,11 +645,52 @@ func (x *SearchO_Object_Public) GetText() string {
 	return ""
 }
 
-func (x *SearchO_Object_Public) GetVote() string {
-	if x != nil {
-		return x.Vote
+type SearchO_Object_Public_Rtng struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// amnt is the number of times the accociated reaction got used.
+	Amnt int32 `protobuf:"varint,100,opt,name=amnt,proto3" json:"amnt,omitempty"`
+}
+
+func (x *SearchO_Object_Public_Rtng) Reset() {
+	*x = SearchO_Object_Public_Rtng{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pbf_description_search_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
 	}
-	return ""
+}
+
+func (x *SearchO_Object_Public_Rtng) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchO_Object_Public_Rtng) ProtoMessage() {}
+
+func (x *SearchO_Object_Public_Rtng) ProtoReflect() protoreflect.Message {
+	mi := &file_pbf_description_search_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchO_Object_Public_Rtng.ProtoReflect.Descriptor instead.
+func (*SearchO_Object_Public_Rtng) Descriptor() ([]byte, []int) {
+	return file_pbf_description_search_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *SearchO_Object_Public_Rtng) GetAmnt() int32 {
+	if x != nil {
+		return x.Amnt
+	}
+	return 0
 }
 
 var File_pbf_description_search_proto protoreflect.FileDescriptor
@@ -700,14 +752,26 @@ var file_pbf_description_search_proto_rawDesc = []byte{
 	0x28, 0x09, 0x52, 0x04, 0x63, 0x72, 0x74, 0x64, 0x12, 0x13, 0x0a, 0x04, 0x64, 0x65, 0x73, 0x63,
 	0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x12, 0x13, 0x0a,
 	0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0xac, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x75, 0x73,
-	0x65, 0x72, 0x22, 0x55, 0x0a, 0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62,
-	0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x12, 0x12, 0x0a, 0x04, 0x65,
-	0x76, 0x6e, 0x74, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x65, 0x76, 0x6e, 0x74, 0x12,
-	0x13, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x74, 0x65, 0x78, 0x74, 0x12, 0x13, 0x0a, 0x04, 0x76, 0x6f, 0x74, 0x65, 0x18, 0xac, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x04, 0x76, 0x6f, 0x74, 0x65, 0x42, 0x10, 0x5a, 0x0e, 0x2e, 0x2f, 0x3b,
-	0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x65, 0x72, 0x22, 0xe5, 0x01, 0x0a, 0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f,
+	0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x12, 0x12, 0x0a, 0x04,
+	0x65, 0x76, 0x6e, 0x74, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x65, 0x76, 0x6e, 0x74,
+	0x12, 0x41, 0x0a, 0x04, 0x72, 0x74, 0x6e, 0x67, 0x18, 0xc8, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x2c, 0x2e, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x53, 0x65,
+	0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62,
+	0x6c, 0x69, 0x63, 0x2e, 0x52, 0x74, 0x6e, 0x67, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x04, 0x72,
+	0x74, 0x6e, 0x67, 0x12, 0x13, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18, 0xac, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x1a, 0x60, 0x0a, 0x09, 0x52, 0x74, 0x6e, 0x67,
+	0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x3d, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70,
+	0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a,
+	0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x5f, 0x52, 0x74, 0x6e, 0x67, 0x52,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x30, 0x0a, 0x1a, 0x53, 0x65,
+	0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62,
+	0x6c, 0x69, 0x63, 0x5f, 0x52, 0x74, 0x6e, 0x67, 0x12, 0x12, 0x0a, 0x04, 0x61, 0x6d, 0x6e, 0x74,
+	0x18, 0x64, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x61, 0x6d, 0x6e, 0x74, 0x42, 0x10, 0x5a, 0x0e,
+	0x2e, 0x2f, 0x3b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -722,19 +786,21 @@ func file_pbf_description_search_proto_rawDescGZIP() []byte {
 	return file_pbf_description_search_proto_rawDescData
 }
 
-var file_pbf_description_search_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_pbf_description_search_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_pbf_description_search_proto_goTypes = []interface{}{
-	(*SearchI)(nil),                 // 0: description.SearchI
-	(*SearchI_Filter)(nil),          // 1: description.SearchI_Filter
-	(*SearchI_Filter_Chunking)(nil), // 2: description.SearchI_Filter_Chunking
-	(*SearchI_Object)(nil),          // 3: description.SearchI_Object
-	(*SearchI_Object_Intern)(nil),   // 4: description.SearchI_Object_Intern
-	(*SearchI_Object_Public)(nil),   // 5: description.SearchI_Object_Public
-	(*SearchO)(nil),                 // 6: description.SearchO
-	(*SearchO_Filter)(nil),          // 7: description.SearchO_Filter
-	(*SearchO_Object)(nil),          // 8: description.SearchO_Object
-	(*SearchO_Object_Intern)(nil),   // 9: description.SearchO_Object_Intern
-	(*SearchO_Object_Public)(nil),   // 10: description.SearchO_Object_Public
+	(*SearchI)(nil),                    // 0: description.SearchI
+	(*SearchI_Filter)(nil),             // 1: description.SearchI_Filter
+	(*SearchI_Filter_Chunking)(nil),    // 2: description.SearchI_Filter_Chunking
+	(*SearchI_Object)(nil),             // 3: description.SearchI_Object
+	(*SearchI_Object_Intern)(nil),      // 4: description.SearchI_Object_Intern
+	(*SearchI_Object_Public)(nil),      // 5: description.SearchI_Object_Public
+	(*SearchO)(nil),                    // 6: description.SearchO
+	(*SearchO_Filter)(nil),             // 7: description.SearchO_Filter
+	(*SearchO_Object)(nil),             // 8: description.SearchO_Object
+	(*SearchO_Object_Intern)(nil),      // 9: description.SearchO_Object_Intern
+	(*SearchO_Object_Public)(nil),      // 10: description.SearchO_Object_Public
+	(*SearchO_Object_Public_Rtng)(nil), // 11: description.SearchO_Object_Public_Rtng
+	nil,                                // 12: description.SearchO_Object_Public.RtngEntry
 }
 var file_pbf_description_search_proto_depIdxs = []int32{
 	1,  // 0: description.SearchI.filter:type_name -> description.SearchI_Filter
@@ -746,11 +812,13 @@ var file_pbf_description_search_proto_depIdxs = []int32{
 	8,  // 6: description.SearchO.object:type_name -> description.SearchO_Object
 	9,  // 7: description.SearchO_Object.intern:type_name -> description.SearchO_Object_Intern
 	10, // 8: description.SearchO_Object.public:type_name -> description.SearchO_Object_Public
-	9,  // [9:9] is the sub-list for method output_type
-	9,  // [9:9] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	12, // 9: description.SearchO_Object_Public.rtng:type_name -> description.SearchO_Object_Public.RtngEntry
+	11, // 10: description.SearchO_Object_Public.RtngEntry.value:type_name -> description.SearchO_Object_Public_Rtng
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_pbf_description_search_proto_init() }
@@ -891,6 +959,18 @@ func file_pbf_description_search_proto_init() {
 				return nil
 			}
 		}
+		file_pbf_description_search_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SearchO_Object_Public_Rtng); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -898,7 +978,7 @@ func file_pbf_description_search_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_pbf_description_search_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
