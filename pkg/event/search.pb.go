@@ -194,6 +194,14 @@ func (x *SearchI_Filter_Chunking) GetPointer() string {
 	return ""
 }
 
+// SearchI_Object defines search queries for fetching event objects in various
+// ways, see properties of SearchI_Object_Intern and SearchI_Object_Public
+// respectively for detailed information.
+//
+// Not providing any search query returns the limited default response of event
+// objects indexed by event start time. That is, the list of events that are
+// going on right now, including events that already happened, and events that
+// will happen in the near future.
 type SearchI_Object struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -255,7 +263,8 @@ type SearchI_Object_Intern struct {
 	unknownFields protoimpl.UnknownFields
 
 	// evnt is the ID of the event being searched. If searching for a particular
-	// event, the search query object must neither contain cate or host.
+	// event, the search query object must neither contain cate or host within the
+	// same search query object.
 	Evnt string `protobuf:"bytes,100,opt,name=evnt,proto3" json:"evnt,omitempty"`
 }
 
@@ -304,8 +313,18 @@ type SearchI_Object_Public struct {
 	unknownFields protoimpl.UnknownFields
 
 	// cate is the ID of the category label for which events are being searched.
+	//
+	// Providing multiple host and category labels within the same search query
+	// object means to search for the intersection of all the given labels within
+	// that search query context. That is, searching for { A, B, C } returns event
+	// objects that are associated to A, B and C.
 	Cate string `protobuf:"bytes,100,opt,name=cate,proto3" json:"cate,omitempty"`
 	// host is the ID of the host label for which events are being searched.
+	//
+	// Providing multiple host and category labels within the same search query
+	// object means to search for the intersection of all the given labels within
+	// that search query context. That is, searching for { A, B, C } returns event
+	// objects that are associated to A, B and C.
 	Host string `protobuf:"bytes,200,opt,name=host,proto3" json:"host,omitempty"`
 }
 
