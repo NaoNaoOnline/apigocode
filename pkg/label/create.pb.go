@@ -230,8 +230,10 @@ type CreateI_Object_Public struct {
 	Desc string `protobuf:"bytes,100,opt,name=desc,proto3" json:"desc,omitempty"`
 	// disc is the label's Discord link.
 	Disc string `protobuf:"bytes,200,opt,name=disc,proto3" json:"disc,omitempty"`
-	// kind is the label type, e.g. host for host labels and cate for category
-	// labels.
+	// kind is the label type for which the label is being created.
+	//
+	//	cate for category labels
+	//	host for host labels
 	Kind string `protobuf:"bytes,300,opt,name=kind,proto3" json:"kind,omitempty"`
 	// name is the label name.
 	Name string `protobuf:"bytes,400,opt,name=name,proto3" json:"name,omitempty"`
