@@ -30,7 +30,7 @@ const (
 //	        {
 //	            "public": {
 //	                "kind": "eth",
-//	                "mess": "It's-a me, Mario!",
+//	                "mess": "signing ownership of 0x001 at 1689001255",
 //	                "pubk": "0x1234",
 //	                "sign": "0x2345"
 //	            }
@@ -232,12 +232,15 @@ type CreateI_Object_Public struct {
 	//
 	//	eth for ethereum wallets
 	Kind string `protobuf:"bytes,100,opt,name=kind,proto3" json:"kind,omitempty"`
-	// mess is the message to sign.
+	// mess is the message to sign. It is ephemeral and will not be stored in the
+	// backend.
 	Mess string `protobuf:"bytes,200,opt,name=mess,proto3" json:"mess,omitempty"`
-	// pubk is the hex encoded compressed public key expected to be recovered from
-	// the given signature.
+	// pubk is the hex encoded public key expected to be recovered from the given
+	// signature during the signature verification challenge. It is ephemeral and
+	// will not be stored in the backend.
 	Pubk string `protobuf:"bytes,300,opt,name=pubk,proto3" json:"pubk,omitempty"`
-	// sign is the signature of the signed message.
+	// sign is the signature of the signed message. It is ephemeral and will not
+	// be stored in the backend.
 	Sign string `protobuf:"bytes,400,opt,name=sign,proto3" json:"sign,omitempty"`
 }
 
