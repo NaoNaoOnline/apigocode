@@ -356,6 +356,9 @@ func (*UpdateI_Object_Update) Descriptor() ([]byte, []int) {
 //	    "object": [
 //	        {
 //	            "intern": {
+//	                "addr": {
+//	                    "time": "1695326765"
+//	                },
 //	                "stts": "updated"
 //	            }
 //	        }
@@ -514,8 +517,10 @@ type UpdateO_Object_Intern struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// addr contains lifecycle metadata for this wallet object.
+	Addr *UpdateO_Object_Intern_Addr `protobuf:"bytes,100,opt,name=addr,proto3" json:"addr,omitempty"`
 	// stts is the resource status upon successful wallet modification.
-	Stts string `protobuf:"bytes,100,opt,name=stts,proto3" json:"stts,omitempty"`
+	Stts string `protobuf:"bytes,200,opt,name=stts,proto3" json:"stts,omitempty"`
 }
 
 func (x *UpdateO_Object_Intern) Reset() {
@@ -550,9 +555,65 @@ func (*UpdateO_Object_Intern) Descriptor() ([]byte, []int) {
 	return file_pbf_wallet_update_proto_rawDescGZIP(), []int{9}
 }
 
+func (x *UpdateO_Object_Intern) GetAddr() *UpdateO_Object_Intern_Addr {
+	if x != nil {
+		return x.Addr
+	}
+	return nil
+}
+
 func (x *UpdateO_Object_Intern) GetStts() string {
 	if x != nil {
 		return x.Stts
+	}
+	return ""
+}
+
+type UpdateO_Object_Intern_Addr struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Time is the unix timestamp in seconds of the most recent time at which this
+	// wallet got re-validated by signing a message again.
+	Time string `protobuf:"bytes,100,opt,name=time,proto3" json:"time,omitempty"`
+}
+
+func (x *UpdateO_Object_Intern_Addr) Reset() {
+	*x = UpdateO_Object_Intern_Addr{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pbf_wallet_update_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateO_Object_Intern_Addr) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateO_Object_Intern_Addr) ProtoMessage() {}
+
+func (x *UpdateO_Object_Intern_Addr) ProtoReflect() protoreflect.Message {
+	mi := &file_pbf_wallet_update_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateO_Object_Intern_Addr.ProtoReflect.Descriptor instead.
+func (*UpdateO_Object_Intern_Addr) Descriptor() ([]byte, []int) {
+	return file_pbf_wallet_update_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UpdateO_Object_Intern_Addr) GetTime() string {
+	if x != nil {
+		return x.Time
 	}
 	return ""
 }
@@ -566,7 +627,7 @@ type UpdateO_Object_Public struct {
 func (x *UpdateO_Object_Public) Reset() {
 	*x = UpdateO_Object_Public{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_update_proto_msgTypes[10]
+		mi := &file_pbf_wallet_update_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -579,7 +640,7 @@ func (x *UpdateO_Object_Public) String() string {
 func (*UpdateO_Object_Public) ProtoMessage() {}
 
 func (x *UpdateO_Object_Public) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_update_proto_msgTypes[10]
+	mi := &file_pbf_wallet_update_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -592,7 +653,7 @@ func (x *UpdateO_Object_Public) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateO_Object_Public.ProtoReflect.Descriptor instead.
 func (*UpdateO_Object_Public) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_update_proto_rawDescGZIP(), []int{10}
+	return file_pbf_wallet_update_proto_rawDescGZIP(), []int{11}
 }
 
 var File_pbf_wallet_update_proto protoreflect.FileDescriptor
@@ -645,12 +706,19 @@ var file_pbf_wallet_update_proto_rawDesc = []byte{
 	0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d,
 	0x2e, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f,
 	0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70,
-	0x75, 0x62, 0x6c, 0x69, 0x63, 0x22, 0x2b, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f,
-	0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x12,
-	0x0a, 0x04, 0x73, 0x74, 0x74, 0x73, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73, 0x74,
-	0x74, 0x73, 0x22, 0x17, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62,
-	0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x42, 0x0b, 0x5a, 0x09, 0x2e,
-	0x2f, 0x3b, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x75, 0x62, 0x6c, 0x69, 0x63, 0x22, 0x64, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f,
+	0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x36,
+	0x0a, 0x04, 0x61, 0x64, 0x64, 0x72, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x77,
+	0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62,
+	0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x5f, 0x41, 0x64, 0x64, 0x72,
+	0x52, 0x04, 0x61, 0x64, 0x64, 0x72, 0x12, 0x13, 0x0a, 0x04, 0x73, 0x74, 0x74, 0x73, 0x18, 0xc8,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73, 0x74, 0x74, 0x73, 0x22, 0x30, 0x0a, 0x1a, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e,
+	0x74, 0x65, 0x72, 0x6e, 0x5f, 0x41, 0x64, 0x64, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x69, 0x6d,
+	0x65, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x22, 0x17, 0x0a,
+	0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f,
+	0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x42, 0x0b, 0x5a, 0x09, 0x2e, 0x2f, 0x3b, 0x77, 0x61, 0x6c,
+	0x6c, 0x65, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -665,19 +733,20 @@ func file_pbf_wallet_update_proto_rawDescGZIP() []byte {
 	return file_pbf_wallet_update_proto_rawDescData
 }
 
-var file_pbf_wallet_update_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_pbf_wallet_update_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_pbf_wallet_update_proto_goTypes = []interface{}{
-	(*UpdateI)(nil),               // 0: wallet.UpdateI
-	(*UpdateI_Filter)(nil),        // 1: wallet.UpdateI_Filter
-	(*UpdateI_Object)(nil),        // 2: wallet.UpdateI_Object
-	(*UpdateI_Object_Intern)(nil), // 3: wallet.UpdateI_Object_Intern
-	(*UpdateI_Object_Public)(nil), // 4: wallet.UpdateI_Object_Public
-	(*UpdateI_Object_Update)(nil), // 5: wallet.UpdateI_Object_Update
-	(*UpdateO)(nil),               // 6: wallet.UpdateO
-	(*UpdateO_Filter)(nil),        // 7: wallet.UpdateO_Filter
-	(*UpdateO_Object)(nil),        // 8: wallet.UpdateO_Object
-	(*UpdateO_Object_Intern)(nil), // 9: wallet.UpdateO_Object_Intern
-	(*UpdateO_Object_Public)(nil), // 10: wallet.UpdateO_Object_Public
+	(*UpdateI)(nil),                    // 0: wallet.UpdateI
+	(*UpdateI_Filter)(nil),             // 1: wallet.UpdateI_Filter
+	(*UpdateI_Object)(nil),             // 2: wallet.UpdateI_Object
+	(*UpdateI_Object_Intern)(nil),      // 3: wallet.UpdateI_Object_Intern
+	(*UpdateI_Object_Public)(nil),      // 4: wallet.UpdateI_Object_Public
+	(*UpdateI_Object_Update)(nil),      // 5: wallet.UpdateI_Object_Update
+	(*UpdateO)(nil),                    // 6: wallet.UpdateO
+	(*UpdateO_Filter)(nil),             // 7: wallet.UpdateO_Filter
+	(*UpdateO_Object)(nil),             // 8: wallet.UpdateO_Object
+	(*UpdateO_Object_Intern)(nil),      // 9: wallet.UpdateO_Object_Intern
+	(*UpdateO_Object_Intern_Addr)(nil), // 10: wallet.UpdateO_Object_Intern_Addr
+	(*UpdateO_Object_Public)(nil),      // 11: wallet.UpdateO_Object_Public
 }
 var file_pbf_wallet_update_proto_depIdxs = []int32{
 	1,  // 0: wallet.UpdateI.filter:type_name -> wallet.UpdateI_Filter
@@ -688,12 +757,13 @@ var file_pbf_wallet_update_proto_depIdxs = []int32{
 	7,  // 5: wallet.UpdateO.filter:type_name -> wallet.UpdateO_Filter
 	8,  // 6: wallet.UpdateO.object:type_name -> wallet.UpdateO_Object
 	9,  // 7: wallet.UpdateO_Object.intern:type_name -> wallet.UpdateO_Object_Intern
-	10, // 8: wallet.UpdateO_Object.public:type_name -> wallet.UpdateO_Object_Public
-	9,  // [9:9] is the sub-list for method output_type
-	9,  // [9:9] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	11, // 8: wallet.UpdateO_Object.public:type_name -> wallet.UpdateO_Object_Public
+	10, // 9: wallet.UpdateO_Object_Intern.addr:type_name -> wallet.UpdateO_Object_Intern_Addr
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_pbf_wallet_update_proto_init() }
@@ -823,6 +893,18 @@ func file_pbf_wallet_update_proto_init() {
 			}
 		}
 		file_pbf_wallet_update_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateO_Object_Intern_Addr); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pbf_wallet_update_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateO_Object_Public); i {
 			case 0:
 				return &v.state
@@ -841,7 +923,7 @@ func file_pbf_wallet_update_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_pbf_wallet_update_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
