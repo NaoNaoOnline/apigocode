@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.31.0
 // 	protoc        v4.23.4
-// source: pbf/wallet/create.proto
+// source: pbf/policy/create.proto
 
-package wallet
+package policy
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -20,29 +20,11 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// CreateI is the input for creating wallets. Note that create queries for
-// wallets must be authenticated. Also note that create queries for wallets are
-// scoped to the calling user. That is, the caller can only ever create wallets
-// for themselves by providing a valid signature.
+// CreateI is the input for creating policies.
 //
 //	{
-//	    "object": [
-//	        {
-//	            "public": {
-//	                "kind": "eth",
-//	                "mess": "...",
-//	                "pubk": "0x1234",
-//	                "sign": "0x2345"
-//	            }
-//	        }
-//	    ]
+//	    "object": []
 //	}
-//
-// The message format is expected to be as shown below.
-//
-//	signing ownership of [    addr    ] at [  unix  ]
-//
-//	signing ownership of 0x7483••••ba5B at 1695326302
 type CreateI struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -55,7 +37,7 @@ type CreateI struct {
 func (x *CreateI) Reset() {
 	*x = CreateI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_create_proto_msgTypes[0]
+		mi := &file_pbf_policy_create_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -68,7 +50,7 @@ func (x *CreateI) String() string {
 func (*CreateI) ProtoMessage() {}
 
 func (x *CreateI) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_create_proto_msgTypes[0]
+	mi := &file_pbf_policy_create_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -81,7 +63,7 @@ func (x *CreateI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateI.ProtoReflect.Descriptor instead.
 func (*CreateI) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_create_proto_rawDescGZIP(), []int{0}
+	return file_pbf_policy_create_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateI) GetFilter() *CreateI_Filter {
@@ -107,7 +89,7 @@ type CreateI_Filter struct {
 func (x *CreateI_Filter) Reset() {
 	*x = CreateI_Filter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_create_proto_msgTypes[1]
+		mi := &file_pbf_policy_create_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -120,7 +102,7 @@ func (x *CreateI_Filter) String() string {
 func (*CreateI_Filter) ProtoMessage() {}
 
 func (x *CreateI_Filter) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_create_proto_msgTypes[1]
+	mi := &file_pbf_policy_create_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -133,7 +115,7 @@ func (x *CreateI_Filter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateI_Filter.ProtoReflect.Descriptor instead.
 func (*CreateI_Filter) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_create_proto_rawDescGZIP(), []int{1}
+	return file_pbf_policy_create_proto_rawDescGZIP(), []int{1}
 }
 
 type CreateI_Object struct {
@@ -148,7 +130,7 @@ type CreateI_Object struct {
 func (x *CreateI_Object) Reset() {
 	*x = CreateI_Object{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_create_proto_msgTypes[2]
+		mi := &file_pbf_policy_create_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -161,7 +143,7 @@ func (x *CreateI_Object) String() string {
 func (*CreateI_Object) ProtoMessage() {}
 
 func (x *CreateI_Object) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_create_proto_msgTypes[2]
+	mi := &file_pbf_policy_create_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -174,7 +156,7 @@ func (x *CreateI_Object) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateI_Object.ProtoReflect.Descriptor instead.
 func (*CreateI_Object) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_create_proto_rawDescGZIP(), []int{2}
+	return file_pbf_policy_create_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CreateI_Object) GetIntern() *CreateI_Object_Intern {
@@ -200,7 +182,7 @@ type CreateI_Object_Intern struct {
 func (x *CreateI_Object_Intern) Reset() {
 	*x = CreateI_Object_Intern{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_create_proto_msgTypes[3]
+		mi := &file_pbf_policy_create_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -213,7 +195,7 @@ func (x *CreateI_Object_Intern) String() string {
 func (*CreateI_Object_Intern) ProtoMessage() {}
 
 func (x *CreateI_Object_Intern) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_create_proto_msgTypes[3]
+	mi := &file_pbf_policy_create_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -226,34 +208,19 @@ func (x *CreateI_Object_Intern) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateI_Object_Intern.ProtoReflect.Descriptor instead.
 func (*CreateI_Object_Intern) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_create_proto_rawDescGZIP(), []int{3}
+	return file_pbf_policy_create_proto_rawDescGZIP(), []int{3}
 }
 
 type CreateI_Object_Public struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	// kind is the wallet type for which the wallet is being created.
-	//
-	//	eth for ethereum wallets
-	Kind string `protobuf:"bytes,100,opt,name=kind,proto3" json:"kind,omitempty"`
-	// mess is the message to sign. It is ephemeral and will not be stored in the
-	// backend.
-	Mess string `protobuf:"bytes,200,opt,name=mess,proto3" json:"mess,omitempty"`
-	// pubk is the hex encoded public key expected to be recovered from the given
-	// signature during the signature verification challenge. It is ephemeral and
-	// will not be stored in the backend.
-	Pubk string `protobuf:"bytes,300,opt,name=pubk,proto3" json:"pubk,omitempty"`
-	// sign is the signature of the signed message. It is ephemeral and will not
-	// be stored in the backend.
-	Sign string `protobuf:"bytes,400,opt,name=sign,proto3" json:"sign,omitempty"`
 }
 
 func (x *CreateI_Object_Public) Reset() {
 	*x = CreateI_Object_Public{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_create_proto_msgTypes[4]
+		mi := &file_pbf_policy_create_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -266,7 +233,7 @@ func (x *CreateI_Object_Public) String() string {
 func (*CreateI_Object_Public) ProtoMessage() {}
 
 func (x *CreateI_Object_Public) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_create_proto_msgTypes[4]
+	mi := &file_pbf_policy_create_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -279,48 +246,13 @@ func (x *CreateI_Object_Public) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateI_Object_Public.ProtoReflect.Descriptor instead.
 func (*CreateI_Object_Public) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_create_proto_rawDescGZIP(), []int{4}
+	return file_pbf_policy_create_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *CreateI_Object_Public) GetKind() string {
-	if x != nil {
-		return x.Kind
-	}
-	return ""
-}
-
-func (x *CreateI_Object_Public) GetMess() string {
-	if x != nil {
-		return x.Mess
-	}
-	return ""
-}
-
-func (x *CreateI_Object_Public) GetPubk() string {
-	if x != nil {
-		return x.Pubk
-	}
-	return ""
-}
-
-func (x *CreateI_Object_Public) GetSign() string {
-	if x != nil {
-		return x.Sign
-	}
-	return ""
-}
-
-// CreateO is the output for creating wallets.
+// CreateO is the output for creating policies.
 //
 //	{
-//	    "object": [
-//	        {
-//	            "intern": {
-//	                "crtd": "1689001255",
-//	                "wllt": "338912367"
-//	            }
-//	        }
-//	    ]
+//	    "object": []
 //	}
 type CreateO struct {
 	state         protoimpl.MessageState
@@ -334,7 +266,7 @@ type CreateO struct {
 func (x *CreateO) Reset() {
 	*x = CreateO{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_create_proto_msgTypes[5]
+		mi := &file_pbf_policy_create_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -347,7 +279,7 @@ func (x *CreateO) String() string {
 func (*CreateO) ProtoMessage() {}
 
 func (x *CreateO) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_create_proto_msgTypes[5]
+	mi := &file_pbf_policy_create_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -360,7 +292,7 @@ func (x *CreateO) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateO.ProtoReflect.Descriptor instead.
 func (*CreateO) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_create_proto_rawDescGZIP(), []int{5}
+	return file_pbf_policy_create_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateO) GetFilter() *CreateO_Filter {
@@ -386,7 +318,7 @@ type CreateO_Filter struct {
 func (x *CreateO_Filter) Reset() {
 	*x = CreateO_Filter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_create_proto_msgTypes[6]
+		mi := &file_pbf_policy_create_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -399,7 +331,7 @@ func (x *CreateO_Filter) String() string {
 func (*CreateO_Filter) ProtoMessage() {}
 
 func (x *CreateO_Filter) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_create_proto_msgTypes[6]
+	mi := &file_pbf_policy_create_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -412,7 +344,7 @@ func (x *CreateO_Filter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateO_Filter.ProtoReflect.Descriptor instead.
 func (*CreateO_Filter) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_create_proto_rawDescGZIP(), []int{6}
+	return file_pbf_policy_create_proto_rawDescGZIP(), []int{6}
 }
 
 type CreateO_Object struct {
@@ -427,7 +359,7 @@ type CreateO_Object struct {
 func (x *CreateO_Object) Reset() {
 	*x = CreateO_Object{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_create_proto_msgTypes[7]
+		mi := &file_pbf_policy_create_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -440,7 +372,7 @@ func (x *CreateO_Object) String() string {
 func (*CreateO_Object) ProtoMessage() {}
 
 func (x *CreateO_Object) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_create_proto_msgTypes[7]
+	mi := &file_pbf_policy_create_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -453,7 +385,7 @@ func (x *CreateO_Object) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateO_Object.ProtoReflect.Descriptor instead.
 func (*CreateO_Object) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_create_proto_rawDescGZIP(), []int{7}
+	return file_pbf_policy_create_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CreateO_Object) GetIntern() *CreateO_Object_Intern {
@@ -474,17 +406,12 @@ type CreateO_Object_Intern struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	// crtd is the unix timestamp in seconds at which the wallet got created.
-	Crtd string `protobuf:"bytes,100,opt,name=crtd,proto3" json:"crtd,omitempty"`
-	// wllt is the ID of the wallet being created.
-	Wllt string `protobuf:"bytes,200,opt,name=wllt,proto3" json:"wllt,omitempty"`
 }
 
 func (x *CreateO_Object_Intern) Reset() {
 	*x = CreateO_Object_Intern{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_create_proto_msgTypes[8]
+		mi := &file_pbf_policy_create_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -497,7 +424,7 @@ func (x *CreateO_Object_Intern) String() string {
 func (*CreateO_Object_Intern) ProtoMessage() {}
 
 func (x *CreateO_Object_Intern) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_create_proto_msgTypes[8]
+	mi := &file_pbf_policy_create_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -510,21 +437,7 @@ func (x *CreateO_Object_Intern) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateO_Object_Intern.ProtoReflect.Descriptor instead.
 func (*CreateO_Object_Intern) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_create_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *CreateO_Object_Intern) GetCrtd() string {
-	if x != nil {
-		return x.Crtd
-	}
-	return ""
-}
-
-func (x *CreateO_Object_Intern) GetWllt() string {
-	if x != nil {
-		return x.Wllt
-	}
-	return ""
+	return file_pbf_policy_create_proto_rawDescGZIP(), []int{8}
 }
 
 type CreateO_Object_Public struct {
@@ -536,7 +449,7 @@ type CreateO_Object_Public struct {
 func (x *CreateO_Object_Public) Reset() {
 	*x = CreateO_Object_Public{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_wallet_create_proto_msgTypes[9]
+		mi := &file_pbf_policy_create_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -549,7 +462,7 @@ func (x *CreateO_Object_Public) String() string {
 func (*CreateO_Object_Public) ProtoMessage() {}
 
 func (x *CreateO_Object_Public) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_wallet_create_proto_msgTypes[9]
+	mi := &file_pbf_policy_create_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -562,98 +475,90 @@ func (x *CreateO_Object_Public) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateO_Object_Public.ProtoReflect.Descriptor instead.
 func (*CreateO_Object_Public) Descriptor() ([]byte, []int) {
-	return file_pbf_wallet_create_proto_rawDescGZIP(), []int{9}
+	return file_pbf_policy_create_proto_rawDescGZIP(), []int{9}
 }
 
-var File_pbf_wallet_create_proto protoreflect.FileDescriptor
+var File_pbf_policy_create_proto protoreflect.FileDescriptor
 
-var file_pbf_wallet_create_proto_rawDesc = []byte{
-	0x0a, 0x17, 0x70, 0x62, 0x66, 0x2f, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2f, 0x63, 0x72, 0x65,
-	0x61, 0x74, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x06, 0x77, 0x61, 0x6c, 0x6c, 0x65,
-	0x74, 0x22, 0x6a, 0x0a, 0x07, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x12, 0x2e, 0x0a, 0x06,
-	0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x77,
-	0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x46, 0x69,
+var file_pbf_policy_create_proto_rawDesc = []byte{
+	0x0a, 0x17, 0x70, 0x62, 0x66, 0x2f, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2f, 0x63, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x06, 0x70, 0x6f, 0x6c, 0x69, 0x63,
+	0x79, 0x22, 0x6a, 0x0a, 0x07, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x12, 0x2e, 0x0a, 0x06,
+	0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x70,
+	0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x46, 0x69,
 	0x6c, 0x74, 0x65, 0x72, 0x52, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x12, 0x2f, 0x0a, 0x06,
 	0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x18, 0xc8, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x16, 0x2e,
-	0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f,
+	0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f,
 	0x62, 0x6a, 0x65, 0x63, 0x74, 0x52, 0x06, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x22, 0x10, 0x0a,
 	0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x22,
 	0x7f, 0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63,
 	0x74, 0x12, 0x35, 0x0a, 0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x18, 0x64, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x1d, 0x2e, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74,
+	0x0b, 0x32, 0x1d, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74,
 	0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e,
 	0x52, 0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x36, 0x0a, 0x06, 0x70, 0x75, 0x62, 0x6c,
-	0x69, 0x63, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x77, 0x61, 0x6c, 0x6c,
-	0x65, 0x74, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63,
+	0x69, 0x63, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x70, 0x6f, 0x6c, 0x69,
+	0x63, 0x79, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63,
 	0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63,
 	0x22, 0x17, 0x0a, 0x15, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65,
-	0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x22, 0x6a, 0x0a, 0x15, 0x43, 0x72, 0x65,
+	0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x22, 0x17, 0x0a, 0x15, 0x43, 0x72, 0x65,
 	0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c,
-	0x69, 0x63, 0x12, 0x12, 0x0a, 0x04, 0x6b, 0x69, 0x6e, 0x64, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x6b, 0x69, 0x6e, 0x64, 0x12, 0x13, 0x0a, 0x04, 0x6d, 0x65, 0x73, 0x73, 0x18, 0xc8,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6d, 0x65, 0x73, 0x73, 0x12, 0x13, 0x0a, 0x04, 0x70,
-	0x75, 0x62, 0x6b, 0x18, 0xac, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x75, 0x62, 0x6b,
-	0x12, 0x13, 0x0a, 0x04, 0x73, 0x69, 0x67, 0x6e, 0x18, 0x90, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x04, 0x73, 0x69, 0x67, 0x6e, 0x22, 0x6a, 0x0a, 0x07, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f,
-	0x12, 0x2e, 0x0a, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x16, 0x2e, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x4f, 0x5f, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x52, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72,
-	0x12, 0x2f, 0x0a, 0x06, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x18, 0xc8, 0x01, 0x20, 0x03, 0x28,
-	0x0b, 0x32, 0x16, 0x2e, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x52, 0x06, 0x6f, 0x62, 0x6a, 0x65, 0x63,
-	0x74, 0x22, 0x10, 0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x46, 0x69, 0x6c,
-	0x74, 0x65, 0x72, 0x22, 0x7f, 0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f,
-	0x62, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x35, 0x0a, 0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x18,
-	0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x43,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e,
-	0x74, 0x65, 0x72, 0x6e, 0x52, 0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x36, 0x0a, 0x06,
-	0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e,
-	0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f,
-	0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70, 0x75,
-	0x62, 0x6c, 0x69, 0x63, 0x22, 0x40, 0x0a, 0x15, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f,
-	0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x12, 0x0a,
-	0x04, 0x63, 0x72, 0x74, 0x64, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x72, 0x74,
-	0x64, 0x12, 0x13, 0x0a, 0x04, 0x77, 0x6c, 0x6c, 0x74, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x77, 0x6c, 0x6c, 0x74, 0x22, 0x17, 0x0a, 0x15, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x42,
-	0x0b, 0x5a, 0x09, 0x2e, 0x2f, 0x3b, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x69, 0x63, 0x22, 0x6a, 0x0a, 0x07, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x12, 0x2e, 0x0a,
+	0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e,
+	0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x46,
+	0x69, 0x6c, 0x74, 0x65, 0x72, 0x52, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x12, 0x2f, 0x0a,
+	0x06, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x18, 0xc8, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x16,
+	0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f,
+	0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x52, 0x06, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x22, 0x10,
+	0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72,
+	0x22, 0x7f, 0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65,
+	0x63, 0x74, 0x12, 0x35, 0x0a, 0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x18, 0x64, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72,
+	0x6e, 0x52, 0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x36, 0x0a, 0x06, 0x70, 0x75, 0x62,
+	0x6c, 0x69, 0x63, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x70, 0x6f, 0x6c,
+	0x69, 0x63, 0x79, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65,
+	0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69,
+	0x63, 0x22, 0x17, 0x0a, 0x15, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a,
+	0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x22, 0x17, 0x0a, 0x15, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62,
+	0x6c, 0x69, 0x63, 0x42, 0x0b, 0x5a, 0x09, 0x2e, 0x2f, 0x3b, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_pbf_wallet_create_proto_rawDescOnce sync.Once
-	file_pbf_wallet_create_proto_rawDescData = file_pbf_wallet_create_proto_rawDesc
+	file_pbf_policy_create_proto_rawDescOnce sync.Once
+	file_pbf_policy_create_proto_rawDescData = file_pbf_policy_create_proto_rawDesc
 )
 
-func file_pbf_wallet_create_proto_rawDescGZIP() []byte {
-	file_pbf_wallet_create_proto_rawDescOnce.Do(func() {
-		file_pbf_wallet_create_proto_rawDescData = protoimpl.X.CompressGZIP(file_pbf_wallet_create_proto_rawDescData)
+func file_pbf_policy_create_proto_rawDescGZIP() []byte {
+	file_pbf_policy_create_proto_rawDescOnce.Do(func() {
+		file_pbf_policy_create_proto_rawDescData = protoimpl.X.CompressGZIP(file_pbf_policy_create_proto_rawDescData)
 	})
-	return file_pbf_wallet_create_proto_rawDescData
+	return file_pbf_policy_create_proto_rawDescData
 }
 
-var file_pbf_wallet_create_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
-var file_pbf_wallet_create_proto_goTypes = []interface{}{
-	(*CreateI)(nil),               // 0: wallet.CreateI
-	(*CreateI_Filter)(nil),        // 1: wallet.CreateI_Filter
-	(*CreateI_Object)(nil),        // 2: wallet.CreateI_Object
-	(*CreateI_Object_Intern)(nil), // 3: wallet.CreateI_Object_Intern
-	(*CreateI_Object_Public)(nil), // 4: wallet.CreateI_Object_Public
-	(*CreateO)(nil),               // 5: wallet.CreateO
-	(*CreateO_Filter)(nil),        // 6: wallet.CreateO_Filter
-	(*CreateO_Object)(nil),        // 7: wallet.CreateO_Object
-	(*CreateO_Object_Intern)(nil), // 8: wallet.CreateO_Object_Intern
-	(*CreateO_Object_Public)(nil), // 9: wallet.CreateO_Object_Public
+var file_pbf_policy_create_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_pbf_policy_create_proto_goTypes = []interface{}{
+	(*CreateI)(nil),               // 0: policy.CreateI
+	(*CreateI_Filter)(nil),        // 1: policy.CreateI_Filter
+	(*CreateI_Object)(nil),        // 2: policy.CreateI_Object
+	(*CreateI_Object_Intern)(nil), // 3: policy.CreateI_Object_Intern
+	(*CreateI_Object_Public)(nil), // 4: policy.CreateI_Object_Public
+	(*CreateO)(nil),               // 5: policy.CreateO
+	(*CreateO_Filter)(nil),        // 6: policy.CreateO_Filter
+	(*CreateO_Object)(nil),        // 7: policy.CreateO_Object
+	(*CreateO_Object_Intern)(nil), // 8: policy.CreateO_Object_Intern
+	(*CreateO_Object_Public)(nil), // 9: policy.CreateO_Object_Public
 }
-var file_pbf_wallet_create_proto_depIdxs = []int32{
-	1, // 0: wallet.CreateI.filter:type_name -> wallet.CreateI_Filter
-	2, // 1: wallet.CreateI.object:type_name -> wallet.CreateI_Object
-	3, // 2: wallet.CreateI_Object.intern:type_name -> wallet.CreateI_Object_Intern
-	4, // 3: wallet.CreateI_Object.public:type_name -> wallet.CreateI_Object_Public
-	6, // 4: wallet.CreateO.filter:type_name -> wallet.CreateO_Filter
-	7, // 5: wallet.CreateO.object:type_name -> wallet.CreateO_Object
-	8, // 6: wallet.CreateO_Object.intern:type_name -> wallet.CreateO_Object_Intern
-	9, // 7: wallet.CreateO_Object.public:type_name -> wallet.CreateO_Object_Public
+var file_pbf_policy_create_proto_depIdxs = []int32{
+	1, // 0: policy.CreateI.filter:type_name -> policy.CreateI_Filter
+	2, // 1: policy.CreateI.object:type_name -> policy.CreateI_Object
+	3, // 2: policy.CreateI_Object.intern:type_name -> policy.CreateI_Object_Intern
+	4, // 3: policy.CreateI_Object.public:type_name -> policy.CreateI_Object_Public
+	6, // 4: policy.CreateO.filter:type_name -> policy.CreateO_Filter
+	7, // 5: policy.CreateO.object:type_name -> policy.CreateO_Object
+	8, // 6: policy.CreateO_Object.intern:type_name -> policy.CreateO_Object_Intern
+	9, // 7: policy.CreateO_Object.public:type_name -> policy.CreateO_Object_Public
 	8, // [8:8] is the sub-list for method output_type
 	8, // [8:8] is the sub-list for method input_type
 	8, // [8:8] is the sub-list for extension type_name
@@ -661,13 +566,13 @@ var file_pbf_wallet_create_proto_depIdxs = []int32{
 	0, // [0:8] is the sub-list for field type_name
 }
 
-func init() { file_pbf_wallet_create_proto_init() }
-func file_pbf_wallet_create_proto_init() {
-	if File_pbf_wallet_create_proto != nil {
+func init() { file_pbf_policy_create_proto_init() }
+func file_pbf_policy_create_proto_init() {
+	if File_pbf_policy_create_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_pbf_wallet_create_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_policy_create_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateI); i {
 			case 0:
 				return &v.state
@@ -679,7 +584,7 @@ func file_pbf_wallet_create_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_wallet_create_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_policy_create_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateI_Filter); i {
 			case 0:
 				return &v.state
@@ -691,7 +596,7 @@ func file_pbf_wallet_create_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_wallet_create_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_policy_create_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateI_Object); i {
 			case 0:
 				return &v.state
@@ -703,7 +608,7 @@ func file_pbf_wallet_create_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_wallet_create_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_policy_create_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateI_Object_Intern); i {
 			case 0:
 				return &v.state
@@ -715,7 +620,7 @@ func file_pbf_wallet_create_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_wallet_create_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_policy_create_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateI_Object_Public); i {
 			case 0:
 				return &v.state
@@ -727,7 +632,7 @@ func file_pbf_wallet_create_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_wallet_create_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_policy_create_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateO); i {
 			case 0:
 				return &v.state
@@ -739,7 +644,7 @@ func file_pbf_wallet_create_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_wallet_create_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_policy_create_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateO_Filter); i {
 			case 0:
 				return &v.state
@@ -751,7 +656,7 @@ func file_pbf_wallet_create_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_wallet_create_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_policy_create_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateO_Object); i {
 			case 0:
 				return &v.state
@@ -763,7 +668,7 @@ func file_pbf_wallet_create_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_wallet_create_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_policy_create_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateO_Object_Intern); i {
 			case 0:
 				return &v.state
@@ -775,7 +680,7 @@ func file_pbf_wallet_create_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_wallet_create_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_policy_create_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateO_Object_Public); i {
 			case 0:
 				return &v.state
@@ -792,18 +697,18 @@ func file_pbf_wallet_create_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_pbf_wallet_create_proto_rawDesc,
+			RawDescriptor: file_pbf_policy_create_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_pbf_wallet_create_proto_goTypes,
-		DependencyIndexes: file_pbf_wallet_create_proto_depIdxs,
-		MessageInfos:      file_pbf_wallet_create_proto_msgTypes,
+		GoTypes:           file_pbf_policy_create_proto_goTypes,
+		DependencyIndexes: file_pbf_policy_create_proto_depIdxs,
+		MessageInfos:      file_pbf_policy_create_proto_msgTypes,
 	}.Build()
-	File_pbf_wallet_create_proto = out.File
-	file_pbf_wallet_create_proto_rawDesc = nil
-	file_pbf_wallet_create_proto_goTypes = nil
-	file_pbf_wallet_create_proto_depIdxs = nil
+	File_pbf_policy_create_proto = out.File
+	file_pbf_policy_create_proto_rawDesc = nil
+	file_pbf_policy_create_proto_goTypes = nil
+	file_pbf_policy_create_proto_depIdxs = nil
 }
