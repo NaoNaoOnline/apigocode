@@ -431,16 +431,20 @@ func (x *SearchI_Object_Symbol) GetLtst() string {
 //	    },
 //	    "object": [
 //	        {
+//	            "extern": {
+//	                "blck": "18312712",
+//	                "chid": "42161",
+//	                "from": "0x1234",
+//	                "hash": "0x2345",
+//	                "kind": "CreateMember",
+//	                "time": "1689001255"
+//	            },
 //	            "intern": {
 //	                "crtd": "1689001255",
 //	                "plcy": "1128376"
 //	            },
 //	            "public": {
 //	                "acce": "2",
-//	                "chid": "42161",
-//	                "from": "0x1234",
-//	                "hash": "0x2345",
-//	                "kind": "CreateMember",
 //	                "memb": "0x3456",
 //	                "syst": "0"
 //	            }
@@ -660,24 +664,126 @@ func (x *SearchO_Object) GetPublic() *SearchO_Object_Public {
 	return nil
 }
 
+type SearchO_Object_Extern struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// blck is the block height at which this record got created.
+	Blck string `protobuf:"bytes,100,opt,name=blck,proto3" json:"blck,omitempty"`
+	// chid is the chain ID, the unique identifier representing the blockchain
+	// network on which this record is located.
+	Chid string `protobuf:"bytes,200,opt,name=chid,proto3" json:"chid,omitempty"`
+	// from is the record creator, the sender of the transaction that submitted
+	// this record.
+	From string `protobuf:"bytes,300,opt,name=from,proto3" json:"from,omitempty"`
+	// hash is the onchain transaction hash that submitted this record.
+	Hash string `protobuf:"bytes,400,opt,name=hash,proto3" json:"hash,omitempty"`
+	// kind is the record type.
+	//
+	//	CreateMember for records of members being created within a system
+	//	CreateSystem for records of systems being created
+	//	DeleteMember for records of members being deleted within a system
+	//	DeleteSystem for records of systems being deleted
+	Kind string `protobuf:"bytes,500,opt,name=kind,proto3" json:"kind,omitempty"`
+	// time is the unix timestamp in seconds at which the record got created
+	// externally. Note that policy records are external data objects that get
+	// created somewhere else, in this case onchain, and thus must bring a
+	// creation timestamp with them. So the created timestamp here originates from
+	// some blockchain network.
+	Time string `protobuf:"bytes,600,opt,name=time,proto3" json:"time,omitempty"`
+}
+
+func (x *SearchO_Object_Extern) Reset() {
+	*x = SearchO_Object_Extern{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pbf_policy_search_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SearchO_Object_Extern) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchO_Object_Extern) ProtoMessage() {}
+
+func (x *SearchO_Object_Extern) ProtoReflect() protoreflect.Message {
+	mi := &file_pbf_policy_search_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchO_Object_Extern.ProtoReflect.Descriptor instead.
+func (*SearchO_Object_Extern) Descriptor() ([]byte, []int) {
+	return file_pbf_policy_search_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *SearchO_Object_Extern) GetBlck() string {
+	if x != nil {
+		return x.Blck
+	}
+	return ""
+}
+
+func (x *SearchO_Object_Extern) GetChid() string {
+	if x != nil {
+		return x.Chid
+	}
+	return ""
+}
+
+func (x *SearchO_Object_Extern) GetFrom() string {
+	if x != nil {
+		return x.From
+	}
+	return ""
+}
+
+func (x *SearchO_Object_Extern) GetHash() string {
+	if x != nil {
+		return x.Hash
+	}
+	return ""
+}
+
+func (x *SearchO_Object_Extern) GetKind() string {
+	if x != nil {
+		return x.Kind
+	}
+	return ""
+}
+
+func (x *SearchO_Object_Extern) GetTime() string {
+	if x != nil {
+		return x.Time
+	}
+	return ""
+}
+
 type SearchO_Object_Intern struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// crtd is the unix timestamp in seconds at which the record got created. Note
-	// that policy records are external data objects that get created somewhere
-	// else and thus must bring a created timestamp with them. So the created
-	// timestamp here originates from some blockchain network.
+	// crtd is the unix timestamp in seconds at which the record got cached
+	// internally.
 	Crtd string `protobuf:"bytes,100,opt,name=crtd,proto3" json:"crtd,omitempty"`
-	// plcy is the ID of the record being searched.
+	// plcy is the internal ID of the record being searched.
 	Plcy string `protobuf:"bytes,200,opt,name=plcy,proto3" json:"plcy,omitempty"`
 }
 
 func (x *SearchO_Object_Intern) Reset() {
 	*x = SearchO_Object_Intern{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_policy_search_proto_msgTypes[11]
+		mi := &file_pbf_policy_search_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -690,7 +796,7 @@ func (x *SearchO_Object_Intern) String() string {
 func (*SearchO_Object_Intern) ProtoMessage() {}
 
 func (x *SearchO_Object_Intern) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_policy_search_proto_msgTypes[11]
+	mi := &file_pbf_policy_search_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -703,7 +809,7 @@ func (x *SearchO_Object_Intern) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchO_Object_Intern.ProtoReflect.Descriptor instead.
 func (*SearchO_Object_Intern) Descriptor() ([]byte, []int) {
-	return file_pbf_policy_search_proto_rawDescGZIP(), []int{11}
+	return file_pbf_policy_search_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *SearchO_Object_Intern) GetCrtd() string {
@@ -727,31 +833,16 @@ type SearchO_Object_Public struct {
 
 	// acce is the SMA record level, permission or role.
 	Acce string `protobuf:"bytes,100,opt,name=acce,proto3" json:"acce,omitempty"`
-	// chid is the chain ID, the unique identifier representing the blockchain
-	// network on which this record is located.
-	Chid string `protobuf:"bytes,200,opt,name=chid,proto3" json:"chid,omitempty"`
-	// from is the record creator, the sender of the transaction that submitted
-	// this record.
-	From string `protobuf:"bytes,300,opt,name=from,proto3" json:"from,omitempty"`
-	// hash is the onchain transaction hash that submitted this record.
-	Hash string `protobuf:"bytes,400,opt,name=hash,proto3" json:"hash,omitempty"`
-	// kind is the record type.
-	//
-	//	CreateMember for records of members being created within a system
-	//	CreateSystem for records of systems being created
-	//	DeleteMember for records of members being deleted within a system
-	//	DeleteSystem for records of systems being deleted
-	Kind string `protobuf:"bytes,500,opt,name=kind,proto3" json:"kind,omitempty"`
 	// memb is the SMA record account, identity or user.
-	Memb string `protobuf:"bytes,600,opt,name=memb,proto3" json:"memb,omitempty"`
+	Memb string `protobuf:"bytes,200,opt,name=memb,proto3" json:"memb,omitempty"`
 	// syst is the SMA record context, resource or scope.
-	Syst string `protobuf:"bytes,700,opt,name=syst,proto3" json:"syst,omitempty"`
+	Syst string `protobuf:"bytes,300,opt,name=syst,proto3" json:"syst,omitempty"`
 }
 
 func (x *SearchO_Object_Public) Reset() {
 	*x = SearchO_Object_Public{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_policy_search_proto_msgTypes[12]
+		mi := &file_pbf_policy_search_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -764,7 +855,7 @@ func (x *SearchO_Object_Public) String() string {
 func (*SearchO_Object_Public) ProtoMessage() {}
 
 func (x *SearchO_Object_Public) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_policy_search_proto_msgTypes[12]
+	mi := &file_pbf_policy_search_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -777,40 +868,12 @@ func (x *SearchO_Object_Public) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchO_Object_Public.ProtoReflect.Descriptor instead.
 func (*SearchO_Object_Public) Descriptor() ([]byte, []int) {
-	return file_pbf_policy_search_proto_rawDescGZIP(), []int{12}
+	return file_pbf_policy_search_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *SearchO_Object_Public) GetAcce() string {
 	if x != nil {
 		return x.Acce
-	}
-	return ""
-}
-
-func (x *SearchO_Object_Public) GetChid() string {
-	if x != nil {
-		return x.Chid
-	}
-	return ""
-}
-
-func (x *SearchO_Object_Public) GetFrom() string {
-	if x != nil {
-		return x.From
-	}
-	return ""
-}
-
-func (x *SearchO_Object_Public) GetHash() string {
-	if x != nil {
-		return x.Hash
-	}
-	return ""
-}
-
-func (x *SearchO_Object_Public) GetKind() string {
-	if x != nil {
-		return x.Kind
 	}
 	return ""
 }
@@ -893,23 +956,27 @@ var file_pbf_policy_search_proto_rawDesc = []byte{
 	0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d,
 	0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f,
 	0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70,
-	0x75, 0x62, 0x6c, 0x69, 0x63, 0x22, 0x40, 0x0a, 0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f,
-	0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x12,
-	0x0a, 0x04, 0x63, 0x72, 0x74, 0x64, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x72,
-	0x74, 0x64, 0x12, 0x13, 0x0a, 0x04, 0x70, 0x6c, 0x63, 0x79, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x04, 0x70, 0x6c, 0x63, 0x79, 0x22, 0xa9, 0x01, 0x0a, 0x15, 0x53, 0x65, 0x61, 0x72,
-	0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69,
-	0x63, 0x12, 0x12, 0x0a, 0x04, 0x61, 0x63, 0x63, 0x65, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x04, 0x61, 0x63, 0x63, 0x65, 0x12, 0x13, 0x0a, 0x04, 0x63, 0x68, 0x69, 0x64, 0x18, 0xc8, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x68, 0x69, 0x64, 0x12, 0x13, 0x0a, 0x04, 0x66, 0x72,
-	0x6f, 0x6d, 0x18, 0xac, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x66, 0x72, 0x6f, 0x6d, 0x12,
-	0x13, 0x0a, 0x04, 0x68, 0x61, 0x73, 0x68, 0x18, 0x90, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x68, 0x61, 0x73, 0x68, 0x12, 0x13, 0x0a, 0x04, 0x6b, 0x69, 0x6e, 0x64, 0x18, 0xf4, 0x03, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x04, 0x6b, 0x69, 0x6e, 0x64, 0x12, 0x13, 0x0a, 0x04, 0x6d, 0x65, 0x6d,
-	0x62, 0x18, 0xd8, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6d, 0x65, 0x6d, 0x62, 0x12, 0x13,
-	0x0a, 0x04, 0x73, 0x79, 0x73, 0x74, 0x18, 0xbc, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73,
-	0x79, 0x73, 0x74, 0x42, 0x0b, 0x5a, 0x09, 0x2e, 0x2f, 0x3b, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x75, 0x62, 0x6c, 0x69, 0x63, 0x22, 0x94, 0x01, 0x0a, 0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68,
+	0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x45, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x12,
+	0x12, 0x0a, 0x04, 0x62, 0x6c, 0x63, 0x6b, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x62,
+	0x6c, 0x63, 0x6b, 0x12, 0x13, 0x0a, 0x04, 0x63, 0x68, 0x69, 0x64, 0x18, 0xc8, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x04, 0x63, 0x68, 0x69, 0x64, 0x12, 0x13, 0x0a, 0x04, 0x66, 0x72, 0x6f, 0x6d,
+	0x18, 0xac, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x66, 0x72, 0x6f, 0x6d, 0x12, 0x13, 0x0a,
+	0x04, 0x68, 0x61, 0x73, 0x68, 0x18, 0x90, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x68, 0x61,
+	0x73, 0x68, 0x12, 0x13, 0x0a, 0x04, 0x6b, 0x69, 0x6e, 0x64, 0x18, 0xf4, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x6b, 0x69, 0x6e, 0x64, 0x12, 0x13, 0x0a, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x18,
+	0xd8, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x22, 0x40, 0x0a, 0x15,
+	0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49,
+	0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x72, 0x74, 0x64, 0x18, 0x64, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x72, 0x74, 0x64, 0x12, 0x13, 0x0a, 0x04, 0x70, 0x6c, 0x63,
+	0x79, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x6c, 0x63, 0x79, 0x22, 0x55,
+	0x0a, 0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x12, 0x12, 0x0a, 0x04, 0x61, 0x63, 0x63, 0x65, 0x18,
+	0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x61, 0x63, 0x63, 0x65, 0x12, 0x13, 0x0a, 0x04, 0x6d,
+	0x65, 0x6d, 0x62, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6d, 0x65, 0x6d, 0x62,
+	0x12, 0x13, 0x0a, 0x04, 0x73, 0x79, 0x73, 0x74, 0x18, 0xac, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x73, 0x79, 0x73, 0x74, 0x42, 0x0b, 0x5a, 0x09, 0x2e, 0x2f, 0x3b, 0x70, 0x6f, 0x6c, 0x69,
+	0x63, 0x79, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -924,7 +991,7 @@ func file_pbf_policy_search_proto_rawDescGZIP() []byte {
 	return file_pbf_policy_search_proto_rawDescData
 }
 
-var file_pbf_policy_search_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_pbf_policy_search_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_pbf_policy_search_proto_goTypes = []interface{}{
 	(*SearchI)(nil),               // 0: policy.SearchI
 	(*SearchI_Filter)(nil),        // 1: policy.SearchI_Filter
@@ -937,8 +1004,9 @@ var file_pbf_policy_search_proto_goTypes = []interface{}{
 	(*SearchO_Filter)(nil),        // 8: policy.SearchO_Filter
 	(*SearchO_Filter_Paging)(nil), // 9: policy.SearchO_Filter_Paging
 	(*SearchO_Object)(nil),        // 10: policy.SearchO_Object
-	(*SearchO_Object_Intern)(nil), // 11: policy.SearchO_Object_Intern
-	(*SearchO_Object_Public)(nil), // 12: policy.SearchO_Object_Public
+	(*SearchO_Object_Extern)(nil), // 11: policy.SearchO_Object_Extern
+	(*SearchO_Object_Intern)(nil), // 12: policy.SearchO_Object_Intern
+	(*SearchO_Object_Public)(nil), // 13: policy.SearchO_Object_Public
 }
 var file_pbf_policy_search_proto_depIdxs = []int32{
 	1,  // 0: policy.SearchI.filter:type_name -> policy.SearchI_Filter
@@ -950,8 +1018,8 @@ var file_pbf_policy_search_proto_depIdxs = []int32{
 	8,  // 6: policy.SearchO.filter:type_name -> policy.SearchO_Filter
 	10, // 7: policy.SearchO.object:type_name -> policy.SearchO_Object
 	9,  // 8: policy.SearchO_Filter.paging:type_name -> policy.SearchO_Filter_Paging
-	11, // 9: policy.SearchO_Object.intern:type_name -> policy.SearchO_Object_Intern
-	12, // 10: policy.SearchO_Object.public:type_name -> policy.SearchO_Object_Public
+	12, // 9: policy.SearchO_Object.intern:type_name -> policy.SearchO_Object_Intern
+	13, // 10: policy.SearchO_Object.public:type_name -> policy.SearchO_Object_Public
 	11, // [11:11] is the sub-list for method output_type
 	11, // [11:11] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name
@@ -1098,7 +1166,7 @@ func file_pbf_policy_search_proto_init() {
 			}
 		}
 		file_pbf_policy_search_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SearchO_Object_Intern); i {
+			switch v := v.(*SearchO_Object_Extern); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1110,6 +1178,18 @@ func file_pbf_policy_search_proto_init() {
 			}
 		}
 		file_pbf_policy_search_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SearchO_Object_Intern); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pbf_policy_search_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SearchO_Object_Public); i {
 			case 0:
 				return &v.state
@@ -1128,7 +1208,7 @@ func file_pbf_policy_search_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_pbf_policy_search_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
