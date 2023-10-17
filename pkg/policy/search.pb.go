@@ -695,11 +695,12 @@ type SearchO_Object_Intern struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// user is the user ID matched to this wallet on the fly, if any. We do not
-	// persist the direct relationship between policy and user because of several
-	// synchronization issues. The user ID will be looked up on demand when
-	// searching for polices. It might as well also be that there is no user
-	// association for a policy object intermittently.
+	// user is the user ID matched to this policy record on the fly, if available.
+	// We do not persist the direct relationship between policy members and user
+	// IDs because of several critical synchronization issues. The user ID will be
+	// looked up on demand when searching for polices or when requesting
+	// permission related resources and actions. Note that it might as well be
+	// that there is no user association for a policy record intermittently.
 	User string `protobuf:"bytes,100,opt,name=user,proto3" json:"user,omitempty"`
 }
 
