@@ -294,7 +294,8 @@ type UpdateI_Object_Symbol struct {
 	unknownFields protoimpl.UnknownFields
 
 	// xtrn set to "like" indexes a new reaction for the given description,
-	// tracking the description like for the calling user.
+	// tracking the description like for the calling user. xtrn set to "ulik"
+	// removes a user like for the given description, if one existed.
 	Xtrn string `protobuf:"bytes,100,opt,name=xtrn,proto3" json:"xtrn,omitempty"`
 }
 
