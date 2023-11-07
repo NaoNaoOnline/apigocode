@@ -31,7 +31,7 @@ const (
 //	            "update": [
 //	                {
 //	                    "ope": "replace",
-//	                    "pat": "/obj/property/desc",
+//	                    "pat": "/desc",
 //	                    "val": "Where CT personalities meet!"
 //	                }
 //	            ]

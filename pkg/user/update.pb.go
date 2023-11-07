@@ -31,7 +31,7 @@ const (
 //	            "update": [
 //	                {
 //	                    "ope": "replace",
-//	                    "pat": "/obj/property/name",
+//	                    "pat": "/name",
 //	                    "val": "xh3"
 //	                }
 //	            ]
