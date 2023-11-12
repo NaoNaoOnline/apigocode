@@ -257,7 +257,9 @@ type SearchI_Object_Intern struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// user is the ID of the user who created this list.
+	// user is the ID of the user having created the lists being searched. If
+	// searching for lists created by a particular user, the search query object
+	// must not contain any other fields.
 	User string `protobuf:"bytes,100,opt,name=user,proto3" json:"user,omitempty"`
 }
 
