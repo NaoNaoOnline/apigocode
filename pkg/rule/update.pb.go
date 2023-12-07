@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.31.0
 // 	protoc        v4.23.4
-// source: pbf/description/update.proto
+// source: pbf/rule/update.proto
 
-package description
+package rule
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -20,23 +20,10 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// UpdateI is the input for updating descriptions.
+// UpdateI is the input for updating rules.
 //
 //	{
-//	    "object": [
-//	        {
-//	            "intern": {
-//	                "desc": "98972893"
-//	            }
-//	            "update": [
-//	                {
-//	                    "ope": "replace",
-//	                    "pat": "/text/data",
-//	                    "val": "In this Hackathon we build a rocket ship!"
-//	                }
-//	            ]
-//	        }
-//	    ]
+//	    "object": []
 //	}
 type UpdateI struct {
 	state         protoimpl.MessageState
@@ -50,7 +37,7 @@ type UpdateI struct {
 func (x *UpdateI) Reset() {
 	*x = UpdateI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[0]
+		mi := &file_pbf_rule_update_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -63,7 +50,7 @@ func (x *UpdateI) String() string {
 func (*UpdateI) ProtoMessage() {}
 
 func (x *UpdateI) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[0]
+	mi := &file_pbf_rule_update_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -76,7 +63,7 @@ func (x *UpdateI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateI.ProtoReflect.Descriptor instead.
 func (*UpdateI) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{0}
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *UpdateI) GetFilter() *UpdateI_Filter {
@@ -102,7 +89,7 @@ type UpdateI_Filter struct {
 func (x *UpdateI_Filter) Reset() {
 	*x = UpdateI_Filter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[1]
+		mi := &file_pbf_rule_update_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -115,7 +102,7 @@ func (x *UpdateI_Filter) String() string {
 func (*UpdateI_Filter) ProtoMessage() {}
 
 func (x *UpdateI_Filter) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[1]
+	mi := &file_pbf_rule_update_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -128,7 +115,7 @@ func (x *UpdateI_Filter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateI_Filter.ProtoReflect.Descriptor instead.
 func (*UpdateI_Filter) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{1}
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{1}
 }
 
 type UpdateI_Object struct {
@@ -145,7 +132,7 @@ type UpdateI_Object struct {
 func (x *UpdateI_Object) Reset() {
 	*x = UpdateI_Object{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[2]
+		mi := &file_pbf_rule_update_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -158,7 +145,7 @@ func (x *UpdateI_Object) String() string {
 func (*UpdateI_Object) ProtoMessage() {}
 
 func (x *UpdateI_Object) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[2]
+	mi := &file_pbf_rule_update_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -171,7 +158,7 @@ func (x *UpdateI_Object) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateI_Object.ProtoReflect.Descriptor instead.
 func (*UpdateI_Object) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{2}
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *UpdateI_Object) GetIntern() *UpdateI_Object_Intern {
@@ -206,15 +193,12 @@ type UpdateI_Object_Intern struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	// desc is the ID of the description being updated.
-	Desc string `protobuf:"bytes,100,opt,name=desc,proto3" json:"desc,omitempty"`
 }
 
 func (x *UpdateI_Object_Intern) Reset() {
 	*x = UpdateI_Object_Intern{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[3]
+		mi := &file_pbf_rule_update_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -227,7 +211,7 @@ func (x *UpdateI_Object_Intern) String() string {
 func (*UpdateI_Object_Intern) ProtoMessage() {}
 
 func (x *UpdateI_Object_Intern) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[3]
+	mi := &file_pbf_rule_update_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,14 +224,7 @@ func (x *UpdateI_Object_Intern) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateI_Object_Intern.ProtoReflect.Descriptor instead.
 func (*UpdateI_Object_Intern) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *UpdateI_Object_Intern) GetDesc() string {
-	if x != nil {
-		return x.Desc
-	}
-	return ""
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{3}
 }
 
 type UpdateI_Object_Public struct {
@@ -259,7 +236,7 @@ type UpdateI_Object_Public struct {
 func (x *UpdateI_Object_Public) Reset() {
 	*x = UpdateI_Object_Public{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[4]
+		mi := &file_pbf_rule_update_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -272,7 +249,7 @@ func (x *UpdateI_Object_Public) String() string {
 func (*UpdateI_Object_Public) ProtoMessage() {}
 
 func (x *UpdateI_Object_Public) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[4]
+	mi := &file_pbf_rule_update_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -285,24 +262,19 @@ func (x *UpdateI_Object_Public) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateI_Object_Public.ProtoReflect.Descriptor instead.
 func (*UpdateI_Object_Public) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{4}
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{4}
 }
 
 type UpdateI_Object_Symbol struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	// like set to "add" indexes a new reaction for the given description,
-	// tracking the description like for the calling user. like set to "rem"
-	// removes a user like for the given description, if one existed.
-	Like string `protobuf:"bytes,100,opt,name=like,proto3" json:"like,omitempty"`
 }
 
 func (x *UpdateI_Object_Symbol) Reset() {
 	*x = UpdateI_Object_Symbol{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[5]
+		mi := &file_pbf_rule_update_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -315,7 +287,7 @@ func (x *UpdateI_Object_Symbol) String() string {
 func (*UpdateI_Object_Symbol) ProtoMessage() {}
 
 func (x *UpdateI_Object_Symbol) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[5]
+	mi := &file_pbf_rule_update_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -328,31 +300,19 @@ func (x *UpdateI_Object_Symbol) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateI_Object_Symbol.ProtoReflect.Descriptor instead.
 func (*UpdateI_Object_Symbol) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *UpdateI_Object_Symbol) GetLike() string {
-	if x != nil {
-		return x.Like
-	}
-	return ""
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{5}
 }
 
 type UpdateI_Object_Update struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	Frm string `protobuf:"bytes,100,opt,name=frm,proto3" json:"frm,omitempty"`
-	Ope string `protobuf:"bytes,200,opt,name=ope,proto3" json:"ope,omitempty"`
-	Pat string `protobuf:"bytes,300,opt,name=pat,proto3" json:"pat,omitempty"`
-	Val string `protobuf:"bytes,400,opt,name=val,proto3" json:"val,omitempty"`
 }
 
 func (x *UpdateI_Object_Update) Reset() {
 	*x = UpdateI_Object_Update{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[6]
+		mi := &file_pbf_rule_update_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -365,7 +325,7 @@ func (x *UpdateI_Object_Update) String() string {
 func (*UpdateI_Object_Update) ProtoMessage() {}
 
 func (x *UpdateI_Object_Update) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[6]
+	mi := &file_pbf_rule_update_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -378,47 +338,13 @@ func (x *UpdateI_Object_Update) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateI_Object_Update.ProtoReflect.Descriptor instead.
 func (*UpdateI_Object_Update) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{6}
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *UpdateI_Object_Update) GetFrm() string {
-	if x != nil {
-		return x.Frm
-	}
-	return ""
-}
-
-func (x *UpdateI_Object_Update) GetOpe() string {
-	if x != nil {
-		return x.Ope
-	}
-	return ""
-}
-
-func (x *UpdateI_Object_Update) GetPat() string {
-	if x != nil {
-		return x.Pat
-	}
-	return ""
-}
-
-func (x *UpdateI_Object_Update) GetVal() string {
-	if x != nil {
-		return x.Val
-	}
-	return ""
-}
-
-// UpdateO is the output for updating descriptions.
+// UpdateO is the output for updating rules.
 //
 //	{
-//	    "object": [
-//	        {
-//	            "intern": {
-//	                "stts": "updated"
-//	            }
-//	        }
-//	    ]
+//	    "object": []
 //	}
 type UpdateO struct {
 	state         protoimpl.MessageState
@@ -432,7 +358,7 @@ type UpdateO struct {
 func (x *UpdateO) Reset() {
 	*x = UpdateO{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[7]
+		mi := &file_pbf_rule_update_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -445,7 +371,7 @@ func (x *UpdateO) String() string {
 func (*UpdateO) ProtoMessage() {}
 
 func (x *UpdateO) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[7]
+	mi := &file_pbf_rule_update_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -458,7 +384,7 @@ func (x *UpdateO) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateO.ProtoReflect.Descriptor instead.
 func (*UpdateO) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{7}
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UpdateO) GetFilter() *UpdateO_Filter {
@@ -484,7 +410,7 @@ type UpdateO_Filter struct {
 func (x *UpdateO_Filter) Reset() {
 	*x = UpdateO_Filter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[8]
+		mi := &file_pbf_rule_update_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -497,7 +423,7 @@ func (x *UpdateO_Filter) String() string {
 func (*UpdateO_Filter) ProtoMessage() {}
 
 func (x *UpdateO_Filter) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[8]
+	mi := &file_pbf_rule_update_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -510,7 +436,7 @@ func (x *UpdateO_Filter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateO_Filter.ProtoReflect.Descriptor instead.
 func (*UpdateO_Filter) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{8}
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{8}
 }
 
 type UpdateO_Object struct {
@@ -525,7 +451,7 @@ type UpdateO_Object struct {
 func (x *UpdateO_Object) Reset() {
 	*x = UpdateO_Object{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[9]
+		mi := &file_pbf_rule_update_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -538,7 +464,7 @@ func (x *UpdateO_Object) String() string {
 func (*UpdateO_Object) ProtoMessage() {}
 
 func (x *UpdateO_Object) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[9]
+	mi := &file_pbf_rule_update_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -551,7 +477,7 @@ func (x *UpdateO_Object) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateO_Object.ProtoReflect.Descriptor instead.
 func (*UpdateO_Object) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{9}
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UpdateO_Object) GetIntern() *UpdateO_Object_Intern {
@@ -572,15 +498,12 @@ type UpdateO_Object_Intern struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	// stts is the resource status upon successful description modification.
-	Stts string `protobuf:"bytes,100,opt,name=stts,proto3" json:"stts,omitempty"`
 }
 
 func (x *UpdateO_Object_Intern) Reset() {
 	*x = UpdateO_Object_Intern{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[10]
+		mi := &file_pbf_rule_update_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -593,7 +516,7 @@ func (x *UpdateO_Object_Intern) String() string {
 func (*UpdateO_Object_Intern) ProtoMessage() {}
 
 func (x *UpdateO_Object_Intern) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[10]
+	mi := &file_pbf_rule_update_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -606,14 +529,7 @@ func (x *UpdateO_Object_Intern) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateO_Object_Intern.ProtoReflect.Descriptor instead.
 func (*UpdateO_Object_Intern) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *UpdateO_Object_Intern) GetStts() string {
-	if x != nil {
-		return x.Stts
-	}
-	return ""
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{10}
 }
 
 type UpdateO_Object_Public struct {
@@ -625,7 +541,7 @@ type UpdateO_Object_Public struct {
 func (x *UpdateO_Object_Public) Reset() {
 	*x = UpdateO_Object_Public{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_description_update_proto_msgTypes[11]
+		mi := &file_pbf_rule_update_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -638,7 +554,7 @@ func (x *UpdateO_Object_Public) String() string {
 func (*UpdateO_Object_Public) ProtoMessage() {}
 
 func (x *UpdateO_Object_Public) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_description_update_proto_msgTypes[11]
+	mi := &file_pbf_rule_update_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -651,117 +567,103 @@ func (x *UpdateO_Object_Public) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateO_Object_Public.ProtoReflect.Descriptor instead.
 func (*UpdateO_Object_Public) Descriptor() ([]byte, []int) {
-	return file_pbf_description_update_proto_rawDescGZIP(), []int{11}
+	return file_pbf_rule_update_proto_rawDescGZIP(), []int{11}
 }
 
-var File_pbf_description_update_proto protoreflect.FileDescriptor
+var File_pbf_rule_update_proto protoreflect.FileDescriptor
 
-var file_pbf_description_update_proto_rawDesc = []byte{
-	0x0a, 0x1c, 0x70, 0x62, 0x66, 0x2f, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f,
-	0x6e, 0x2f, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0b,
-	0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x74, 0x0a, 0x07, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x12, 0x33, 0x0a, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72,
-	0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70,
-	0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x46, 0x69, 0x6c,
-	0x74, 0x65, 0x72, 0x52, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x12, 0x34, 0x0a, 0x06, 0x6f,
-	0x62, 0x6a, 0x65, 0x63, 0x74, 0x18, 0xc8, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x64,
-	0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x52, 0x06, 0x6f, 0x62, 0x6a, 0x65, 0x63,
-	0x74, 0x22, 0x10, 0x0a, 0x0e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x46, 0x69, 0x6c,
-	0x74, 0x65, 0x72, 0x22, 0x83, 0x02, 0x0a, 0x0e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f,
-	0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x3a, 0x0a, 0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e,
-	0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70,
-	0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a,
-	0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x52, 0x06, 0x69, 0x6e, 0x74, 0x65,
-	0x72, 0x6e, 0x12, 0x3b, 0x0a, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x18, 0xc8, 0x01, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f,
-	0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
-	0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x12,
-	0x3b, 0x0a, 0x06, 0x73, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x18, 0xac, 0x02, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x22, 0x2e, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x53, 0x79,
-	0x6d, 0x62, 0x6f, 0x6c, 0x52, 0x06, 0x73, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x12, 0x3b, 0x0a, 0x06,
-	0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x18, 0x90, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x22, 0x2e,
-	0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x52, 0x06, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x22, 0x2b, 0x0a, 0x15, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65,
-	0x72, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x65, 0x73, 0x63, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x22, 0x17, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x22,
-	0x2b, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63,
-	0x74, 0x5f, 0x53, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x6c, 0x69, 0x6b, 0x65,
-	0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6c, 0x69, 0x6b, 0x65, 0x22, 0x62, 0x0a, 0x15,
+var file_pbf_rule_update_proto_rawDesc = []byte{
+	0x0a, 0x15, 0x70, 0x62, 0x66, 0x2f, 0x72, 0x75, 0x6c, 0x65, 0x2f, 0x75, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x04, 0x72, 0x75, 0x6c, 0x65, 0x22, 0x66, 0x0a,
+	0x07, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x12, 0x2c, 0x0a, 0x06, 0x66, 0x69, 0x6c, 0x74,
+	0x65, 0x72, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x72, 0x75, 0x6c, 0x65, 0x2e,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x52, 0x06,
+	0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x12, 0x2d, 0x0a, 0x06, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x18, 0xc8, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x72, 0x75, 0x6c, 0x65, 0x2e, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x52, 0x06, 0x6f,
+	0x62, 0x6a, 0x65, 0x63, 0x74, 0x22, 0x10, 0x0a, 0x0e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49,
+	0x5f, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x22, 0xe7, 0x01, 0x0a, 0x0e, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x33, 0x0a, 0x06, 0x69, 0x6e,
+	0x74, 0x65, 0x72, 0x6e, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x72, 0x75, 0x6c,
+	0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x52, 0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12,
+	0x34, 0x0a, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x1b, 0x2e, 0x72, 0x75, 0x6c, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f,
+	0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70,
+	0x75, 0x62, 0x6c, 0x69, 0x63, 0x12, 0x34, 0x0a, 0x06, 0x73, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x18,
+	0xac, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x72, 0x75, 0x6c, 0x65, 0x2e, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x53, 0x79, 0x6d,
+	0x62, 0x6f, 0x6c, 0x52, 0x06, 0x73, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x12, 0x34, 0x0a, 0x06, 0x75,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x18, 0x90, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x72,
+	0x75, 0x6c, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65,
+	0x63, 0x74, 0x5f, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x06, 0x75, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x22, 0x17, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a,
+	0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x22, 0x17, 0x0a, 0x15, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62,
+	0x6c, 0x69, 0x63, 0x22, 0x17, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f,
+	0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x53, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x22, 0x17, 0x0a, 0x15,
 	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x66, 0x72, 0x6d, 0x18, 0x64, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x03, 0x66, 0x72, 0x6d, 0x12, 0x11, 0x0a, 0x03, 0x6f, 0x70, 0x65, 0x18, 0xc8,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6f, 0x70, 0x65, 0x12, 0x11, 0x0a, 0x03, 0x70, 0x61,
-	0x74, 0x18, 0xac, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x70, 0x61, 0x74, 0x12, 0x11, 0x0a,
-	0x03, 0x76, 0x61, 0x6c, 0x18, 0x90, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x76, 0x61, 0x6c,
-	0x22, 0x74, 0x0a, 0x07, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x12, 0x33, 0x0a, 0x06, 0x66,
-	0x69, 0x6c, 0x74, 0x65, 0x72, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x64, 0x65,
-	0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x4f, 0x5f, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x52, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72,
-	0x12, 0x34, 0x0a, 0x06, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x18, 0xc8, 0x01, 0x20, 0x03, 0x28,
-	0x0b, 0x32, 0x1b, 0x2e, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
-	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x52, 0x06,
-	0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x22, 0x10, 0x0a, 0x0e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x4f, 0x5f, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x22, 0x89, 0x01, 0x0a, 0x0e, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x3a, 0x0a, 0x06, 0x69,
-	0x6e, 0x74, 0x65, 0x72, 0x6e, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x64, 0x65,
-	0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x52,
-	0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x3b, 0x0a, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69,
-	0x63, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x64, 0x65, 0x73, 0x63, 0x72,
-	0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f,
-	0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70, 0x75,
-	0x62, 0x6c, 0x69, 0x63, 0x22, 0x2b, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f,
-	0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x12, 0x0a,
-	0x04, 0x73, 0x74, 0x74, 0x73, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73, 0x74, 0x74,
-	0x73, 0x22, 0x17, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a,
-	0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x42, 0x10, 0x5a, 0x0e, 0x2e, 0x2f,
-	0x3b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x22, 0x66, 0x0a, 0x07, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f,
+	0x12, 0x2c, 0x0a, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x14, 0x2e, 0x72, 0x75, 0x6c, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f,
+	0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x52, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x12, 0x2d,
+	0x0a, 0x06, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x18, 0xc8, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x14, 0x2e, 0x72, 0x75, 0x6c, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f,
+	0x62, 0x6a, 0x65, 0x63, 0x74, 0x52, 0x06, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x22, 0x10, 0x0a,
+	0x0e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x22,
+	0x7b, 0x0a, 0x0e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63,
+	0x74, 0x12, 0x33, 0x0a, 0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x18, 0x64, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x1b, 0x2e, 0x72, 0x75, 0x6c, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f,
+	0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x52, 0x06,
+	0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x34, 0x0a, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63,
+	0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x72, 0x75, 0x6c, 0x65, 0x2e, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75,
+	0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x22, 0x17, 0x0a, 0x15,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49,
+	0x6e, 0x74, 0x65, 0x72, 0x6e, 0x22, 0x17, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f,
+	0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x42, 0x09,
+	0x5a, 0x07, 0x2e, 0x2f, 0x3b, 0x72, 0x75, 0x6c, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
-	file_pbf_description_update_proto_rawDescOnce sync.Once
-	file_pbf_description_update_proto_rawDescData = file_pbf_description_update_proto_rawDesc
+	file_pbf_rule_update_proto_rawDescOnce sync.Once
+	file_pbf_rule_update_proto_rawDescData = file_pbf_rule_update_proto_rawDesc
 )
 
-func file_pbf_description_update_proto_rawDescGZIP() []byte {
-	file_pbf_description_update_proto_rawDescOnce.Do(func() {
-		file_pbf_description_update_proto_rawDescData = protoimpl.X.CompressGZIP(file_pbf_description_update_proto_rawDescData)
+func file_pbf_rule_update_proto_rawDescGZIP() []byte {
+	file_pbf_rule_update_proto_rawDescOnce.Do(func() {
+		file_pbf_rule_update_proto_rawDescData = protoimpl.X.CompressGZIP(file_pbf_rule_update_proto_rawDescData)
 	})
-	return file_pbf_description_update_proto_rawDescData
+	return file_pbf_rule_update_proto_rawDescData
 }
 
-var file_pbf_description_update_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
-var file_pbf_description_update_proto_goTypes = []interface{}{
-	(*UpdateI)(nil),               // 0: description.UpdateI
-	(*UpdateI_Filter)(nil),        // 1: description.UpdateI_Filter
-	(*UpdateI_Object)(nil),        // 2: description.UpdateI_Object
-	(*UpdateI_Object_Intern)(nil), // 3: description.UpdateI_Object_Intern
-	(*UpdateI_Object_Public)(nil), // 4: description.UpdateI_Object_Public
-	(*UpdateI_Object_Symbol)(nil), // 5: description.UpdateI_Object_Symbol
-	(*UpdateI_Object_Update)(nil), // 6: description.UpdateI_Object_Update
-	(*UpdateO)(nil),               // 7: description.UpdateO
-	(*UpdateO_Filter)(nil),        // 8: description.UpdateO_Filter
-	(*UpdateO_Object)(nil),        // 9: description.UpdateO_Object
-	(*UpdateO_Object_Intern)(nil), // 10: description.UpdateO_Object_Intern
-	(*UpdateO_Object_Public)(nil), // 11: description.UpdateO_Object_Public
+var file_pbf_rule_update_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_pbf_rule_update_proto_goTypes = []interface{}{
+	(*UpdateI)(nil),               // 0: rule.UpdateI
+	(*UpdateI_Filter)(nil),        // 1: rule.UpdateI_Filter
+	(*UpdateI_Object)(nil),        // 2: rule.UpdateI_Object
+	(*UpdateI_Object_Intern)(nil), // 3: rule.UpdateI_Object_Intern
+	(*UpdateI_Object_Public)(nil), // 4: rule.UpdateI_Object_Public
+	(*UpdateI_Object_Symbol)(nil), // 5: rule.UpdateI_Object_Symbol
+	(*UpdateI_Object_Update)(nil), // 6: rule.UpdateI_Object_Update
+	(*UpdateO)(nil),               // 7: rule.UpdateO
+	(*UpdateO_Filter)(nil),        // 8: rule.UpdateO_Filter
+	(*UpdateO_Object)(nil),        // 9: rule.UpdateO_Object
+	(*UpdateO_Object_Intern)(nil), // 10: rule.UpdateO_Object_Intern
+	(*UpdateO_Object_Public)(nil), // 11: rule.UpdateO_Object_Public
 }
-var file_pbf_description_update_proto_depIdxs = []int32{
-	1,  // 0: description.UpdateI.filter:type_name -> description.UpdateI_Filter
-	2,  // 1: description.UpdateI.object:type_name -> description.UpdateI_Object
-	3,  // 2: description.UpdateI_Object.intern:type_name -> description.UpdateI_Object_Intern
-	4,  // 3: description.UpdateI_Object.public:type_name -> description.UpdateI_Object_Public
-	5,  // 4: description.UpdateI_Object.symbol:type_name -> description.UpdateI_Object_Symbol
-	6,  // 5: description.UpdateI_Object.update:type_name -> description.UpdateI_Object_Update
-	8,  // 6: description.UpdateO.filter:type_name -> description.UpdateO_Filter
-	9,  // 7: description.UpdateO.object:type_name -> description.UpdateO_Object
-	10, // 8: description.UpdateO_Object.intern:type_name -> description.UpdateO_Object_Intern
-	11, // 9: description.UpdateO_Object.public:type_name -> description.UpdateO_Object_Public
+var file_pbf_rule_update_proto_depIdxs = []int32{
+	1,  // 0: rule.UpdateI.filter:type_name -> rule.UpdateI_Filter
+	2,  // 1: rule.UpdateI.object:type_name -> rule.UpdateI_Object
+	3,  // 2: rule.UpdateI_Object.intern:type_name -> rule.UpdateI_Object_Intern
+	4,  // 3: rule.UpdateI_Object.public:type_name -> rule.UpdateI_Object_Public
+	5,  // 4: rule.UpdateI_Object.symbol:type_name -> rule.UpdateI_Object_Symbol
+	6,  // 5: rule.UpdateI_Object.update:type_name -> rule.UpdateI_Object_Update
+	8,  // 6: rule.UpdateO.filter:type_name -> rule.UpdateO_Filter
+	9,  // 7: rule.UpdateO.object:type_name -> rule.UpdateO_Object
+	10, // 8: rule.UpdateO_Object.intern:type_name -> rule.UpdateO_Object_Intern
+	11, // 9: rule.UpdateO_Object.public:type_name -> rule.UpdateO_Object_Public
 	10, // [10:10] is the sub-list for method output_type
 	10, // [10:10] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
@@ -769,13 +671,13 @@ var file_pbf_description_update_proto_depIdxs = []int32{
 	0,  // [0:10] is the sub-list for field type_name
 }
 
-func init() { file_pbf_description_update_proto_init() }
-func file_pbf_description_update_proto_init() {
-	if File_pbf_description_update_proto != nil {
+func init() { file_pbf_rule_update_proto_init() }
+func file_pbf_rule_update_proto_init() {
+	if File_pbf_rule_update_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_pbf_description_update_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateI); i {
 			case 0:
 				return &v.state
@@ -787,7 +689,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateI_Filter); i {
 			case 0:
 				return &v.state
@@ -799,7 +701,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateI_Object); i {
 			case 0:
 				return &v.state
@@ -811,7 +713,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateI_Object_Intern); i {
 			case 0:
 				return &v.state
@@ -823,7 +725,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateI_Object_Public); i {
 			case 0:
 				return &v.state
@@ -835,7 +737,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateI_Object_Symbol); i {
 			case 0:
 				return &v.state
@@ -847,7 +749,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateI_Object_Update); i {
 			case 0:
 				return &v.state
@@ -859,7 +761,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateO); i {
 			case 0:
 				return &v.state
@@ -871,7 +773,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateO_Filter); i {
 			case 0:
 				return &v.state
@@ -883,7 +785,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateO_Object); i {
 			case 0:
 				return &v.state
@@ -895,7 +797,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateO_Object_Intern); i {
 			case 0:
 				return &v.state
@@ -907,7 +809,7 @@ func file_pbf_description_update_proto_init() {
 				return nil
 			}
 		}
-		file_pbf_description_update_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+		file_pbf_rule_update_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateO_Object_Public); i {
 			case 0:
 				return &v.state
@@ -924,18 +826,18 @@ func file_pbf_description_update_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_pbf_description_update_proto_rawDesc,
+			RawDescriptor: file_pbf_rule_update_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_pbf_description_update_proto_goTypes,
-		DependencyIndexes: file_pbf_description_update_proto_depIdxs,
-		MessageInfos:      file_pbf_description_update_proto_msgTypes,
+		GoTypes:           file_pbf_rule_update_proto_goTypes,
+		DependencyIndexes: file_pbf_rule_update_proto_depIdxs,
+		MessageInfos:      file_pbf_rule_update_proto_msgTypes,
 	}.Build()
-	File_pbf_description_update_proto = out.File
-	file_pbf_description_update_proto_rawDesc = nil
-	file_pbf_description_update_proto_goTypes = nil
-	file_pbf_description_update_proto_depIdxs = nil
+	File_pbf_rule_update_proto = out.File
+	file_pbf_rule_update_proto_rawDesc = nil
+	file_pbf_rule_update_proto_goTypes = nil
+	file_pbf_rule_update_proto_depIdxs = nil
 }
