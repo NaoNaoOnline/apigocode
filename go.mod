@@ -1,6 +1,6 @@
 module github.com/NaoNaoOnline/apigocode
 
-go 1.20
+go 1.21
 
 require (
 	github.com/twitchtv/twirp v8.1.3+incompatible
