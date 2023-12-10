@@ -27,7 +27,7 @@ const (
 //	    "object": [
 //	        {
 //	            "symbol": {
-//	                "sync": "default"
+//	                "sync": "dflt"
 //	            }
 //	        }
 //	    ]
@@ -278,15 +278,15 @@ type UpdateI_Object_Symbol struct {
 	unknownFields protoimpl.UnknownFields
 
 	// pntr must be left empty when initiating a new update lifecycle with sync
-	// set to "default". As shown below, the update response contains a pointer
-	// that can be provided in a delayed consecutive call, again with sync set to
-	// "default". As long as the provided pointer equals the internally tracked
+	// set to "dflt". As shown below, the update response contains a pointer that
+	// can be provided in a delayed consecutive call, again with sync set to
+	// "dflt". As long as the provided pointer equals the internally tracked
 	// value, the background process to synchronize onchain and offchain state is
 	// still in progress. Once the internal pointer differs from the provided pntr
 	// value here, the status "updated" will be returned.
 	Pntr string `protobuf:"bytes,100,opt,name=pntr,proto3" json:"pntr,omitempty"`
-	// sync set to "default" starts a background process to synchronize onchain
-	// and offchain state. That way the current state can be fetched on demand by
+	// sync set to "dflt" starts a background process to synchronize onchain and
+	// offchain state. That way the current state can be fetched on demand by
 	// premium subscribers in case the subscription flow failed intermittendly.
 	Sync string `protobuf:"bytes,200,opt,name=sync,proto3" json:"sync,omitempty"`
 }
@@ -642,7 +642,7 @@ type UpdateO_Object_Symbol struct {
 
 	// pntr is the internally tracked timestamp of the most recent update
 	// lifecycle. The pointer returned here can be provided in a delayed
-	// consecutive call, again with sync set to "default".
+	// consecutive call, again with sync set to "dflt".
 	Pntr string `protobuf:"bytes,100,opt,name=pntr,proto3" json:"pntr,omitempty"`
 }
 

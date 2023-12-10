@@ -239,7 +239,6 @@ type CreateI_Object_Public struct {
 	//	cate for adding or removing events matching the given category IDs
 	//	evnt for adding or removing events matching the given event IDs
 	//	host for adding or removing events matching the given host IDs
-	//	like for adding or removing events liked by the given user IDs
 	//	user for adding or removing events created by the given user IDs
 	Kind string `protobuf:"bytes,300,opt,name=kind,proto3" json:"kind,omitempty"`
 	// list is the list ID this rule is mapped to.
