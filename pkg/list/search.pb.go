@@ -356,11 +356,15 @@ func (*SearchI_Object_Public) Descriptor() ([]byte, []int) {
 //	        {
 //	            "intern": {
 //	                "crtd": "1689001255",
+//	                "feed": {
+//	                    "time": "1695326765"
+//	                },
 //	                "list": "986763351",
 //	                "user": "551265"
 //	            },
 //	            "public": {
-//	                "desc": "where CT personalities meet"
+//	                "desc": "where CT personalities meet",
+//	                "feed": "1695326765"
 //	            }
 //	        },
 //	        ...
@@ -521,10 +525,12 @@ type SearchO_Object_Intern struct {
 
 	// crtd is the unix timestamp in seconds at which the list got created.
 	Crtd string `protobuf:"bytes,100,opt,name=crtd,proto3" json:"crtd,omitempty"`
+	// feed contains lifecycle metadata for this list object.
+	Feed *SearchO_Object_Intern_Feed `protobuf:"bytes,200,opt,name=feed,proto3" json:"feed,omitempty"`
 	// list is the ID of the list being searched.
-	List string `protobuf:"bytes,200,opt,name=list,proto3" json:"list,omitempty"`
+	List string `protobuf:"bytes,300,opt,name=list,proto3" json:"list,omitempty"`
 	// user is the ID of the user who created this list.
-	User string `protobuf:"bytes,300,opt,name=user,proto3" json:"user,omitempty"`
+	User string `protobuf:"bytes,400,opt,name=user,proto3" json:"user,omitempty"`
 }
 
 func (x *SearchO_Object_Intern) Reset() {
@@ -566,6 +572,13 @@ func (x *SearchO_Object_Intern) GetCrtd() string {
 	return ""
 }
 
+func (x *SearchO_Object_Intern) GetFeed() *SearchO_Object_Intern_Feed {
+	if x != nil {
+		return x.Feed
+	}
+	return nil
+}
+
 func (x *SearchO_Object_Intern) GetList() string {
 	if x != nil {
 		return x.List
@@ -580,6 +593,55 @@ func (x *SearchO_Object_Intern) GetUser() string {
 	return ""
 }
 
+type SearchO_Object_Intern_Feed struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Time is the unix timestamp in seconds of the most recent time at which this
+	// list's notification timestamp got updated.
+	Time string `protobuf:"bytes,100,opt,name=time,proto3" json:"time,omitempty"`
+}
+
+func (x *SearchO_Object_Intern_Feed) Reset() {
+	*x = SearchO_Object_Intern_Feed{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pbf_list_search_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SearchO_Object_Intern_Feed) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchO_Object_Intern_Feed) ProtoMessage() {}
+
+func (x *SearchO_Object_Intern_Feed) ProtoReflect() protoreflect.Message {
+	mi := &file_pbf_list_search_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchO_Object_Intern_Feed.ProtoReflect.Descriptor instead.
+func (*SearchO_Object_Intern_Feed) Descriptor() ([]byte, []int) {
+	return file_pbf_list_search_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *SearchO_Object_Intern_Feed) GetTime() string {
+	if x != nil {
+		return x.Time
+	}
+	return ""
+}
+
 type SearchO_Object_Public struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -587,12 +649,18 @@ type SearchO_Object_Public struct {
 
 	// desc is the list's description.
 	Desc string `protobuf:"bytes,100,opt,name=desc,proto3" json:"desc,omitempty"`
+	// feed is the unix timestamp in seconds at which the user consumed this list
+	// most recently. The delta between feed and the current time can be used to
+	// fetch the delta of event objects that the user has not seen yet in this
+	// list. This way clients display notifications for users in a pull based
+	// system.
+	Feed string `protobuf:"bytes,200,opt,name=feed,proto3" json:"feed,omitempty"`
 }
 
 func (x *SearchO_Object_Public) Reset() {
 	*x = SearchO_Object_Public{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pbf_list_search_proto_msgTypes[10]
+		mi := &file_pbf_list_search_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -605,7 +673,7 @@ func (x *SearchO_Object_Public) String() string {
 func (*SearchO_Object_Public) ProtoMessage() {}
 
 func (x *SearchO_Object_Public) ProtoReflect() protoreflect.Message {
-	mi := &file_pbf_list_search_proto_msgTypes[10]
+	mi := &file_pbf_list_search_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -618,12 +686,19 @@ func (x *SearchO_Object_Public) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchO_Object_Public.ProtoReflect.Descriptor instead.
 func (*SearchO_Object_Public) Descriptor() ([]byte, []int) {
-	return file_pbf_list_search_proto_rawDescGZIP(), []int{10}
+	return file_pbf_list_search_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *SearchO_Object_Public) GetDesc() string {
 	if x != nil {
 		return x.Desc
+	}
+	return ""
+}
+
+func (x *SearchO_Object_Public) GetFeed() string {
+	if x != nil {
+		return x.Feed
 	}
 	return ""
 }
@@ -676,17 +751,25 @@ var file_pbf_list_search_proto_rawDesc = []byte{
 	0x06, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x34, 0x0a, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69,
 	0x63, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x6c, 0x69, 0x73, 0x74, 0x2e,
 	0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50,
-	0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x22, 0x55, 0x0a,
-	0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f,
-	0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x72, 0x74, 0x64, 0x18, 0x64,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x72, 0x74, 0x64, 0x12, 0x13, 0x0a, 0x04, 0x6c, 0x69,
-	0x73, 0x74, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x12,
-	0x13, 0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0xac, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x75, 0x73, 0x65, 0x72, 0x22, 0x2b, 0x0a, 0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f,
-	0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x12, 0x12, 0x0a,
-	0x04, 0x64, 0x65, 0x73, 0x63, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x65, 0x73,
-	0x63, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x3b, 0x6c, 0x69, 0x73, 0x74, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x06, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x22, 0x8c, 0x01,
+	0x0a, 0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x72, 0x74, 0x64, 0x18,
+	0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x72, 0x74, 0x64, 0x12, 0x35, 0x0a, 0x04, 0x66,
+	0x65, 0x65, 0x64, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x6c, 0x69, 0x73,
+	0x74, 0x2e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x5f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x5f, 0x46, 0x65, 0x65, 0x64, 0x52, 0x04, 0x66, 0x65,
+	0x65, 0x64, 0x12, 0x13, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0xac, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x13, 0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18,
+	0x90, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x22, 0x30, 0x0a, 0x1a,
+	0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x49,
+	0x6e, 0x74, 0x65, 0x72, 0x6e, 0x5f, 0x46, 0x65, 0x65, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x69,
+	0x6d, 0x65, 0x18, 0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x22, 0x40,
+	0x0a, 0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4f, 0x5f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x5f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x65, 0x73, 0x63, 0x18,
+	0x64, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x12, 0x13, 0x0a, 0x04, 0x66,
+	0x65, 0x65, 0x64, 0x18, 0xc8, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x66, 0x65, 0x65, 0x64,
+	0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x3b, 0x6c, 0x69, 0x73, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -701,19 +784,20 @@ func file_pbf_list_search_proto_rawDescGZIP() []byte {
 	return file_pbf_list_search_proto_rawDescData
 }
 
-var file_pbf_list_search_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_pbf_list_search_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_pbf_list_search_proto_goTypes = []interface{}{
-	(*SearchI)(nil),               // 0: list.SearchI
-	(*SearchI_Filter)(nil),        // 1: list.SearchI_Filter
-	(*SearchI_Filter_Paging)(nil), // 2: list.SearchI_Filter_Paging
-	(*SearchI_Object)(nil),        // 3: list.SearchI_Object
-	(*SearchI_Object_Intern)(nil), // 4: list.SearchI_Object_Intern
-	(*SearchI_Object_Public)(nil), // 5: list.SearchI_Object_Public
-	(*SearchO)(nil),               // 6: list.SearchO
-	(*SearchO_Filter)(nil),        // 7: list.SearchO_Filter
-	(*SearchO_Object)(nil),        // 8: list.SearchO_Object
-	(*SearchO_Object_Intern)(nil), // 9: list.SearchO_Object_Intern
-	(*SearchO_Object_Public)(nil), // 10: list.SearchO_Object_Public
+	(*SearchI)(nil),                    // 0: list.SearchI
+	(*SearchI_Filter)(nil),             // 1: list.SearchI_Filter
+	(*SearchI_Filter_Paging)(nil),      // 2: list.SearchI_Filter_Paging
+	(*SearchI_Object)(nil),             // 3: list.SearchI_Object
+	(*SearchI_Object_Intern)(nil),      // 4: list.SearchI_Object_Intern
+	(*SearchI_Object_Public)(nil),      // 5: list.SearchI_Object_Public
+	(*SearchO)(nil),                    // 6: list.SearchO
+	(*SearchO_Filter)(nil),             // 7: list.SearchO_Filter
+	(*SearchO_Object)(nil),             // 8: list.SearchO_Object
+	(*SearchO_Object_Intern)(nil),      // 9: list.SearchO_Object_Intern
+	(*SearchO_Object_Intern_Feed)(nil), // 10: list.SearchO_Object_Intern_Feed
+	(*SearchO_Object_Public)(nil),      // 11: list.SearchO_Object_Public
 }
 var file_pbf_list_search_proto_depIdxs = []int32{
 	1,  // 0: list.SearchI.filter:type_name -> list.SearchI_Filter
@@ -724,12 +808,13 @@ var file_pbf_list_search_proto_depIdxs = []int32{
 	7,  // 5: list.SearchO.filter:type_name -> list.SearchO_Filter
 	8,  // 6: list.SearchO.object:type_name -> list.SearchO_Object
 	9,  // 7: list.SearchO_Object.intern:type_name -> list.SearchO_Object_Intern
-	10, // 8: list.SearchO_Object.public:type_name -> list.SearchO_Object_Public
-	9,  // [9:9] is the sub-list for method output_type
-	9,  // [9:9] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	11, // 8: list.SearchO_Object.public:type_name -> list.SearchO_Object_Public
+	10, // 9: list.SearchO_Object_Intern.feed:type_name -> list.SearchO_Object_Intern_Feed
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_pbf_list_search_proto_init() }
@@ -859,6 +944,18 @@ func file_pbf_list_search_proto_init() {
 			}
 		}
 		file_pbf_list_search_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SearchO_Object_Intern_Feed); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pbf_list_search_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SearchO_Object_Public); i {
 			case 0:
 				return &v.state
@@ -877,7 +974,7 @@ func file_pbf_list_search_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_pbf_list_search_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
