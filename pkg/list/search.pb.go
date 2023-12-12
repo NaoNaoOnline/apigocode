@@ -653,7 +653,8 @@ type SearchO_Object_Public struct {
 	// most recently. The delta between feed and the current time can be used to
 	// fetch the delta of event objects that the user has not seen yet in this
 	// list. This way clients display notifications for users in a pull based
-	// system.
+	// system. If this timestamp is zero, it means the list's notifications are
+	// disabled.
 	Feed string `protobuf:"bytes,200,opt,name=feed,proto3" json:"feed,omitempty"`
 }
 
